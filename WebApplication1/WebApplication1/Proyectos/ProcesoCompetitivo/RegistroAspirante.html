@@ -1,0 +1,163 @@
+﻿          
+<style type="text/css">
+    .contenedorb {
+        width: 90px;
+        height: 240px;
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+    }
+
+    .botonF1 {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        background: #7cb342;
+        right: 0;
+        bottom: 0;
+        position: fixed;
+        margin-right: 16px;
+        margin-bottom: 16px;
+        border: none;
+        outline: none;
+        color: #FFF;
+        font-size: 36px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        transition: .1s;
+    }
+
+        .botonF1:active {
+            transform: scale(1.1);
+        }
+
+    .foo {
+        display: block;
+        position: relative;
+        width: 300px;
+        margin: auto;
+        cursor: pointer;
+        border: 0;
+        height: 60px;
+        border-radius: 5px;
+        outline: 0;
+    }
+
+        .foo:after {
+            transition: 200ms all ease;
+            border-bottom: 3px solid rgba(0,0,0,0.2);
+            background: #D4D0CE;
+            text-shadow: 0 2px 0 rgba(0,0,0,0.2);
+            color: #fff;
+            font-size: 20px;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            content: 'Adjuntar Documentos';
+            line-height: 60px;
+            border-radius: 5px;
+        }
+</style>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Inicio</a>
+            </li>
+            <li>
+                <a>Proyectos</a>
+            </li>
+            <li>
+                <a href="#/Proyectos/ProCompetitivo">Proceso competitivo</a>
+            </li>
+            <li class="active">
+                <strong>Registro Aspirante </strong>
+            </li>
+        </ol>
+
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title" >
+                    <h2>Registrar Aspirantes</h2>
+                    <div class="hr-line-dashed"></div>
+                </div>
+                <div class="tabs-container">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="DatoBasic#tab-1"> Datos Basicos</a></li>
+                        <li class=""><a data-toggle="tab" href="DatoBasic#tab-2">Lista de Precio</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="panel-body">
+                                <form role="form" name="userForm" novalidate>
+                                    <div class="form-group col-lg-4" ng-class="{ 'has-error' : userForm.id.$invalid && !userForm.id.$pristine }">
+                                        <label>Nit/Cedula*</label>
+                                        <input type="text" name="id" ng-model="Asp.NIT_CEDULA" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-lg-4" ng-class="{ 'has-error' : userForm.nombre.$invalid && !userForm.nombre.$pristine }">
+                                        <label>Nombre /Razon social*</label>
+                                        <input type="text" name="nombre" ng-model="Asp.NOM_RAZONSOCIAL" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-lg-4" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                                        <label>Correo*</label>
+                                        <input type="text" name="email" ng-model="Asp.CORREO" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-lg-3">
+                                        <label>Direccion</label>
+                                        <input type="text" class="form-control" ng-model="Asp.DIRECCION">
+                                    </div>
+                                    <div class="form-group col-lg-3">
+                                        <label>Ciudad</label>
+                                        <input type="text" class="form-control" ng-model="Asp.CIUDAD">
+                                    </div>
+                                    <div class="form-group col-lg-3">
+                                        <label>Departamento</label>
+                                        <input type="text" class="form-control" ng-model="Asp.DEPARTAMENTO">
+                                    </div>
+                                    <div class="form-group col-lg-3">
+                                        <label>Telefono</label>
+                                        <input type="text" class="form-control" ng-model="Asp.TELEFONO">
+                                    </div>
+                                </form>
+                                
+                            </div>
+                        </div>
+
+                        <div id="tab-2" class="tab-pane">
+                            <div class="panel-body">
+                                <div class="col-lg-12">
+                                    <section id="envio">
+                                        <form id="myForm">
+                                            <input type="file" id="files" name="files[]" onchange="angular.element(this).scope().visualizar()" multiple="multiple">
+                                        </form>
+                                    </section>
+                                </div>
+                                <br />
+                                <br />
+                                <br />
+                                <div class="col-lg-12">
+                                    <div id="lista"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-footer">
+                        <center><button type="button" class="btn btn-primary" ng-disabled="userForm.$invalid" ng-click="Add()">Registrar</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
