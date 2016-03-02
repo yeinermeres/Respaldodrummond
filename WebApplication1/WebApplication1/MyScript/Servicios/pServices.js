@@ -218,8 +218,13 @@ app.service("OfertamercantilServices", function ($http) {
     var uri = "http://localhost:49372";
 
 
-    this.post = function (ofm, pl) {
+    this.post = function (ofm) {
         var req = $http.post(uri + '/api/Ofertamercantil', ofm);
+        return req;
+    };
+
+    this.postpl = function (pl) {
+        var req = $http.post(uri + '/api/Polizas/',pl);
         return req;
     };
 

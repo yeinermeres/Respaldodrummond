@@ -3,9 +3,11 @@
     $scope.visibilidadOff = false
     $scope.visibilidadOn = true
 
+    $scope.ON = true
+    $scope.OFF = false
+
     $scope.OFM = {};//Objeto de OFM actual
     $scope.OFMS = []//Listado de Objeto OFM 
-
 
     $scope.Proceso = {};//Objeto actual
     $scope.Procesos = [];//Listado de Objetos
@@ -86,9 +88,23 @@
            });
     }
 
+
+    function loadRecordsAspirantes(id) {
+        $scope.AspirantesPros = "";
+        var promiseGet = ProcompetitivoServices.get(id); //The Method Call from service
+        promiseGet.then(function (pl) {
+            $scope.AspirantesPros = pl.data;
+            console.log("aspir " + $scope.AspirantesPros)
+        },
+        function (errorPl) {
+            console.log('Error al cargar los datos almacenados', errorPl);
+        });
+    }
+
     ///Cargar poliza al array 
     $scope.CargarPoliza = function () {
         Polizas.push($scope.Poliza);
+
         document.getElementById("lispoliza").innerHTML = "";
         var item = "<table class='table table-striped'>";
         for (var i = 0; i < Polizas.length; i++)
@@ -202,6 +218,8 @@
 
     $scope.Cargar = function ()
     {
+        $scope.AspirantesPro = this.AspirantesPro;
+        $scope.OFM.CONTRATISTA = $scope.AspirantesPro.NOM_RAZONSOCIAL;
 
         $scope.OFM.FECHA_FINAL_OFM = "";
         $scope.OFM.VIGENCIA = "";
@@ -234,7 +252,6 @@
         $scope.DiaAct = ('0' + $scope.CurrentDate.getDate()).slice(-2);
 
         
-
         var OFM = {}
         ID_COMPETITIVO = localStorage.getItem("ID_COMPETITIVO");
         OFM.N_OFM = $scope.OFM.N_OFM;;
@@ -252,6 +269,12 @@
         OFM.NO_PO = $scope.OFM.NO_PO;
         OFM.PROC_OFM = ID_COMPETITIVO;
         console.log(Polizas)
+        var dto = {
+            'ofm': OFM,
+            'pl':Polizas
+        };
+        
+        console.log(dto);
         if (Polizas.length === 0)
         {
             swal({
@@ -268,11 +291,14 @@
             function (isConfirm) {
                 if (isConfirm)
                 {
-                    var promiseGet = OfertamercantilServices.post(OFM, Polizas); //The Method Call from service
-
+                    var promiseGet = OfertamercantilServices.post(dto); //The Method Call from service
+                    
                     promiseGet.then(function (pl) {
                         $scope.Procesos = pl.data;
                         swal("Mensaje de Notificacion", " se ha realizado el registro de manera exítosa.", "success");
+                        loadRecordsAspirantes();
+                        $scope.Mostrar();
+                        
                     },
                        function (errorPl) {
                            console.log('Error al cargar los datos almacenados', errorPl);
@@ -287,15 +313,19 @@
         }
         else
         {
-            var promiseGet = OfertamercantilServices.post(OFM, Polizas); //The Method Call from service
+            var promiseGet = OfertamercantilServices.post(dto); //The Method Call from service
             promiseGet.then(function (pl) {
             $scope.Procesos = pl.data;
+            swal("Mensaje de Notificacion", " se ha realizado el registro de manera exítosa.", "success");
+            $scope.initialize();
+            loadRecord();
+            $scope.Mostrar();
              },
-               function (errorPl) {
+               function (errorPl)
+               {
                    console.log('Error al cargar los datos almacenados', errorPl);
                });
         }
-        
     }
 
     $scope.configuracion = function () {
@@ -319,6 +349,14 @@
         $scope.OFM.VIGENCIA = $scope.Proceso.TIEMPO_EJECUCION;
     }
 
+    $scope.detalle = function () {
+        $scope.Proceso = this.Proceso;
+        loadRecordsAspirantes($scope.Proceso.ID_COMPETITIVO);
+
+        console.log("id c " + $scope.Proceso.ID_COMPETITIVO);
+        $scope.ON = false
+        $scope.OFF = true
+    }
 
     $scope.Mostrar = function () {
         $scope.visibilidadOff = true
@@ -330,5 +368,10 @@
         $scope.visibilidadOff = false
         $scope.visibilidadOn = true
 
+    }
+
+    $scope.Atras = function () {
+        $scope.ON = true
+        $scope.OFF = false
     }
 });

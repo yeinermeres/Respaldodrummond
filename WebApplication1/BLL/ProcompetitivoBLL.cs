@@ -153,7 +153,7 @@ namespace BLL
             {
                 List<Vproyec_competitivo> proc = new List<Vproyec_competitivo>();
 
-                var result = from proce in contex.Proceso_Competitivo
+                var result = from proce in contex.Proceso_Competitivo where proce.ESTADO_PROC !="L"
                              join  proye in contex.Proyecto on proce.PROYECTO_COMPETITIVO equals proye.PROYEC_ID
                              select new
                              {

@@ -194,3 +194,17 @@ F:\drummondnuevo\WebApplication1\BLL\bin\Debug\Entity.pdb
 F:\drummondnuevo\WebApplication1\BLL\bin\Debug\EntityFramework.xml
 F:\drummondnuevo\WebApplication1\BLL\bin\Debug\EntityFramework.SqlServer.xml
 F:\drummondnuevo\WebApplication1\BLL\obj\Debug\BLL.pdb
+F:\Respaldodrummond\WebApplication1\BLL\bin\Debug\BLL.dll.config
+F:\Respaldodrummond\WebApplication1\BLL\bin\Debug\BLL.dll
+F:\Respaldodrummond\WebApplication1\BLL\bin\Debug\BLL.pdb
+F:\Respaldodrummond\WebApplication1\BLL\bin\Debug\Dal.dll
+F:\Respaldodrummond\WebApplication1\BLL\bin\Debug\Entity.dll
+F:\Respaldodrummond\WebApplication1\BLL\bin\Debug\EntityFramework.dll
+F:\Respaldodrummond\WebApplication1\BLL\bin\Debug\EntityFramework.SqlServer.dll
+F:\Respaldodrummond\WebApplication1\BLL\bin\Debug\Dal.pdb
+F:\Respaldodrummond\WebApplication1\BLL\bin\Debug\Entity.pdb
+F:\Respaldodrummond\WebApplication1\BLL\bin\Debug\EntityFramework.xml
+F:\Respaldodrummond\WebApplication1\BLL\bin\Debug\EntityFramework.SqlServer.xml
+F:\Respaldodrummond\WebApplication1\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+F:\Respaldodrummond\WebApplication1\BLL\obj\Debug\BLL.dll
+F:\Respaldodrummond\WebApplication1\BLL\obj\Debug\BLL.pdb

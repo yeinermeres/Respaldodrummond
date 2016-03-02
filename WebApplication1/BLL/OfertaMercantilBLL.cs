@@ -15,17 +15,26 @@ namespace BLL
        /// Metodo para registrar una oferta mercantil
        /// </summary>
        /// <param name="ofm"></param>
-       public void OFMadd(Oferta_Mercantil ofm) 
+       public int OFMadd(OjectOfm dto) 
        {
            using (var contex = new ModelContex())
            {
                using (var Transaction = contex.Database.BeginTransaction())
                {
-                   contex.Oferta_mercantil.Add(ofm);
-                   EstadoProceso(ofm.PROC_OFM);
-                   //Addpolizas(pl);
-                   contex.SaveChanges();
-                   Transaction.Commit();
+                   var ctx = contex.Oferta_mercantil.Where(p => p.N_OFM == dto.ofm.N_OFM).FirstOrDefault();
+                   if (ctx != null)
+                   {
+                       return 1;
+                   }
+                   else
+                   {
+                       contex.Oferta_mercantil.Add(dto.ofm);
+                       Addpolizas(dto.pl);
+                       EstadoProceso(dto.ofm.PROC_OFM);
+                       contex.SaveChanges();
+                       Transaction.Commit();
+                       return 2;
+                   }
                }
            }
        }

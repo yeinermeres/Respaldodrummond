@@ -23,6 +23,6 @@ namespace Dal
         /// </summary>
         public int OFERTAMERCANTIL { get; set; }
 
-        public virtual Oferta_Mercantil oferta_mercantil { get; set; }
+        //public virtual Oferta_Mercantil oferta_mercantil { get; set; }
     }
 }

@@ -36,11 +36,18 @@
                 <a href="#/">Inicio</a>
             </li>
             <li>
-                <a>Oferta Mercantil</a>
+                <a>Proyecto</a>
+            </li>
+            <li>
+                <strong>Proceso competitivo</strong>
+            </li>
+            <li>
+                <strong>Oferta mercantil</strong>
             </li>
             <li class="active">
                 <strong>Registro</strong>
             </li>
+            
         </ol>
     </div>
     <div class="col-lg-2">
@@ -57,14 +64,7 @@
                     <div class="ibox-title">
                         <div class="row">
                             <div class="col-lg-9">
-                                <h2>Gestion oferta mercantil</h2>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="input-group">
-                                    <input type="text" placeholder="Buscador" class="input-sm form-control" ng-model="filtro"> <span class="input-group-btn">
-                                        <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></button>
-                                    </span>
-                                </div>
+                                <h2>Gestión oferta mercantil</h2>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
@@ -78,17 +78,20 @@
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane active">
                                 <div class="panel-body">
-                                    <div class="form-group col-lg-3">
-                                        <label>Proceso Competitivo</label>
+                                    <div class="form-group col-lg-6">
+                                        <label>Seleccione un proceso competitivo</label>
                                         <input type="text" placeholder="" class="form-control" title="Clic para cargar listado de proceso competitivos" ng-click="Modal();" ng-model="OFM.DETALLE_PS ">
                                     </div>
-
+                                    <div class="form-group col-lg-3">
+                                        <label>No de PO</label>
+                                        <input type="text" placeholder="" class="form-control" ng-model="OFM.NO_PO">
+                                    </div>
                                     <div class="form-group col-lg-3">
                                         <label>Nº  de Contrato</label>
                                         <input type="text" placeholder="" class="form-control" ng-model="OFM.N_OFM">
                                     </div>
 
-                                    <div class="form-group col-lg-3" id="data_1">
+                                    <div class="form-group col-lg-4" id="data_1">
                                         <label class="font-noraml">Fecha de Suspcrición</label>
                                         <div class="input-group date">
                                             <span class="input-group-addon">
@@ -97,7 +100,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-lg-3" id="data_1">
+                                    <div class="form-group col-lg-4" id="data_1">
                                         <label class="font-noraml">Fecha de Inicio</label>
                                         <div class="input-group date">
                                             <span class="input-group-addon">
@@ -106,7 +109,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-lg-3" id="data_1">
+                                    <div class="form-group col-lg-4" id="data_1">
                                         <label class="font-noraml">Fecha de Finalización</label>
                                         <div class="input-group date">
                                             <span class="input-group-addon">
@@ -115,27 +118,27 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-lg-3">
+                                    <div class="form-group col-lg-4">
                                         <label>Vigencia Del contrato</label>
                                         <input type="text" placeholder="" class="form-control" ng-model="OFM.VIGENCIA" readonly="">
                                     </div>
 
-                                    <div class="form-group col-lg-3">
+                                    <div class="form-group col-lg-4">
                                         <label>Titulo Del Contrato</label>
                                         <input type="text" placeholder="" class="form-control" ng-model="OFM.TITULO_OFM">
                                     </div>
-                                    <div class="form-group col-lg-3">
+                                    <div class="form-group col-lg-4">
                                         <label>Proveedor/Contratista</label>
                                         <input type="text" placeholder="" class="form-control" ng-model="OFM.CONTRATISTA">
                                     </div>
 
-                                    <div class="form-group col-lg-9">
+                                    <div class="form-group col-lg-6">
                                         <label>Objeto Del Contrato</label>
                                         <input type="text" placeholder="" class="form-control" ng-model="OFM.OBJETO_OFM">
                                     </div>
 
                                     <div class="form-group col-lg-3">
-                                        <label>Lugar de Ejecución</label>
+                                        <label>Jurisdicción</label>
                                         <input type="text" placeholder="" class="form-control" ng-model="OFM.LUGRA_EJECUCION_OFM">
                                     </div>
 
@@ -148,19 +151,14 @@
                                         </select>
                                     </div>
 
-                                    <div class="form-group col-lg-3">
+                                    <div class="form-group col-lg-4">
                                         <label>Valor Estimado</label>
                                         <input type="text" placeholder="" class="form-control" ng-model="OFM.VALOR_ESTIMAO_OFM">
                                     </div>
 
-                                    <div class="form-group col-lg-3">
+                                    <div class="form-group col-lg-4">
                                         <label>Valor Real</label>
                                         <input type="text" placeholder="" class="form-control" ng-model="OFM.VALOR_REAL_OFM">
-                                    </div>
-
-                                    <div class="form-group col-lg-3">
-                                        <label>No de PO</label>
-                                        <input type="text" placeholder="" class="form-control" ng-model="OFM.NO_PO">
                                     </div>
                                 </div>
                             </div>
@@ -219,12 +217,14 @@
                                                     <td>
                                                         
                                                     </td>
-                                                    <td>
-                                                        <button class="btn btn-primary" title="guardar" id="guardar" ng-click="CargarPoliza();"><i class="fa fa-save"></i></button>
+                                                    <td style="padding-top:10px">
+                                                        <a href="javasrcritp:;" title="guardar" id="guardar" ng-click="CargarPoliza();"><i class="fa fa-save" style="font-size:20px;color:#1A7BB9;padding-right:5px"></i></a>
                                                     </td>
-                                                    <td>
-                                                        <button class="btn btn-danger" title="Limpiar" id="limpiar" ng-click="limpiar();"><i class="fa fa-times"></i></button>
-                                                    </td>
+                                                    <!--
+                                                    <td style="padding-top:10px">
+                                                    </td>    
+                                                    -->
+                                                    
                                                 </tr>    
                                             </tbody>      
                                         </table>
@@ -286,10 +286,10 @@
                                 <thead>
                                     <tr>
                                         <th></th>
-                                        <th>No-Oferta mercantil</th>
-                                        <th>Fecha de suscripcion</th>
-                                        <th>Fecha de incio</th>
                                         <th>Titulo</th>
+                                        <th>Objeto de contrato</th>
+                                        <th>Fech inic proceso</th>
+                                        <th>Fecha de suscripción</th>
                                         <th>Lugar de ejecucion</th>
                                         <th>Valor estimado</th>
                                         <th>Detalle</th>
@@ -299,10 +299,10 @@
                                 <tbody>
                                     <tr class="gradeX" data-ng-repeat="OFM in OFMS track by $index">
                                         <th></th>
-                                        <td>{{OFM.N_OFM}}</td>
-                                        <td>{{OFM.FECHA_SUSCRIP_OFM}}</td>
-                                        <td>{{OFM.FECHA_INIC_OFM}}</td>
                                         <td>{{OFM.TITULO_OFM}}</td>
+                                        <td>{{OFM.OBJETO_OFM}}</td>
+                                        <td>{{OFM.FECHA_INIC_OFM}}</td>
+                                        <td>{{OFM.FECHA_SUSCRIP_OFM}}</td>
                                         <td>{{OFM.LUGRA_EJECUCION_OFM}}</td>
                                         <td>{{OFM.VALOR_ESTIMAO_OFM}}</td>
                                         <td class="center">
@@ -337,23 +337,23 @@
                 <h4 class="modal-title">Listado de procesos competitivos</h4>
             </div>
             <div class="modal-body">
-                <table class="table table-stripe">
-                    <thead>
-                        <tr>
-                            <th>Proyecto</th>
-                            <th>Proceso competitivo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="gradeX" data-ng-repeat="Proceso in Procesos track by $index" ng-click="Cargar()">
-                            <td>{{Proceso.PROYECTO}}</td>
-                            <td>{{Proceso.DETALLE_PS}}</td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
+                <div ng-show="ON">
+                    <ul class="nav metismenu" id="side-menu" data-ng-repeat="Proceso in Procesos track by $index" ng-click="detalle()">
+                        <li>
+                            <a><i class="fa fa-folder"></i> <span class="nav-label">{{Proceso.DETALLE_PS}}</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div ng-show="OFF">
+                    <ul class="nav metismenu" id="side-menu" data-ng-repeat="AspirantesPro in AspirantesPros">
+                        <li ng-click="Cargar()">
+                            <a><i class="fa fa-user"></i> <span class="nav-label">{{AspirantesPro.NOM_RAZONSOCIAL}}</span></a>
+                        </li>
+                    </ul>
+                    <center><button class="btn btn-default " type="button" ng-click="Atras()"><i class="fa fa-reply"></i> Atras</button></center>
+                </div>
             </div>
+
             <div class="modal-footer">
                 <button type="submit" class="btn btn-white" data-dismiss="modal">Cerrar</button>
             </div>

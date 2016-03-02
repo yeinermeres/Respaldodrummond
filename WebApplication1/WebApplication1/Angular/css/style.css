@@ -8,7 +8,7 @@
 */
 h1,
 h2,
-h3,
+h3,.md-skin .nav-header
 h4,
 h5,
 h6 {
@@ -7679,7 +7679,7 @@ body.md-skin {
     background-color: #ffffff;
 }
 .md-skin .nav-header {
-    background: url("patterns/4.png") no-repeat;
+    background: url("patterns/01.png") no-repeat;
 }
 .md-skin .label,
 .md-skin .badge {
