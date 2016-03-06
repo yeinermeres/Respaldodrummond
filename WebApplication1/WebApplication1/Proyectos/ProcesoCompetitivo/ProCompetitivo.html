@@ -97,9 +97,17 @@
                                     <td>{{Proceso.FECHA_INIC_SERVICE}}</td>
                                     <td style="text-align:center">{{Proceso.TIEMPO_EJECUCION}} días</td>
                                     <td>
-                                        <a href="#/DetalleCompetitivo" title="Ver detalle" ng-click="detalle()"><i class="fa fa-eye" style="font-size:20px;color:#1A7BB9;"></i></a>
-                                    </td>
-                                    <td style="width:100px">
+                                      <span>
+                                        <span ng-show='Proceso.ESTADO_PROC == "C"'>
+                                            <a href="#/DetalleCompetitivo" title="Ver detalle" ng-click="detalle()"><i class="fa fa-eye" style="font-size:20px;color:#1A7BB9;"></i></a>
+                                        </span>
+                                        <span ng-show='Proceso.ESTADO_PROC == "L"'>
+                                            <a href="#/DetalleCompetitivo" title="Ver detalle" ng-click=""><i class="fa fa-eye" style="font-size:20px;color:#1A7BB9;"></i></a>
+                                        </span>
+                                          <span ng-show='Proceso.ESTADO_PROC == "A"'></span>
+                                      </span>
+                                     </td>
+                                    <td style="width:100px;text-align:center">
                                         <span>
                                             <span ng-show='Proceso.ESTADO_PROC == "A"'></span>
                                             <span ng-show='Proceso.ESTADO_PROC == "L"'>

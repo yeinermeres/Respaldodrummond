@@ -86,8 +86,21 @@
     <Compile Include="Migrations\201603021624361_cambio-pl.Designer.cs">
       <DependentUpon>201603021624361_cambio-pl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603031936559_keynueva.cs" />
+    <Compile Include="Migrations\201603031936559_keynueva.Designer.cs">
+      <DependentUpon>201603031936559_keynueva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603031946146_nuevos_a.cs" />
+    <Compile Include="Migrations\201603031946146_nuevos_a.Designer.cs">
+      <DependentUpon>201603031946146_nuevos_a.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603032130326_PO.cs" />
+    <Compile Include="Migrations\201603032130326_PO.Designer.cs">
+      <DependentUpon>201603032130326_PO.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Oferta_Mercantil.cs" />
+    <Compile Include="Orden_Compra.cs" />
     <Compile Include="Polizas.cs" />
     <Compile Include="Proceso_Competitivo.cs" />
     <Compile Include="Proyectos.cs" />
@@ -127,6 +140,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603021624361_cambio-pl.resx">
       <DependentUpon>201603021624361_cambio-pl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603031936559_keynueva.resx">
+      <DependentUpon>201603031936559_keynueva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603031946146_nuevos_a.resx">
+      <DependentUpon>201603031946146_nuevos_a.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603032130326_PO.resx">
+      <DependentUpon>201603032130326_PO.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

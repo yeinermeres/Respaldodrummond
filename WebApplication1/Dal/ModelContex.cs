@@ -18,6 +18,7 @@ namespace Dal
         public DbSet<Polizas> Polizas { get; set; }
         public DbSet<Aspirantes> Aspirantes { get; set; }
         public DbSet<Aspirante_Proceso> Aspirantes_proceso { get; set; }
+        public DbSet<Orden_Compra> Orden_Compra { get; set; }
 
     }
 }

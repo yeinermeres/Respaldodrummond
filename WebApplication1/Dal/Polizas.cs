@@ -21,7 +21,7 @@ namespace Dal
         /// <summary>
         /// Relacion oferta mercantil polizas
         /// </summary>
-        public int OFERTAMERCANTIL { get; set; }
+        public string OFERTAMERCANTIL { get; set; }
 
         //public virtual Oferta_Mercantil oferta_mercantil { get; set; }
     }

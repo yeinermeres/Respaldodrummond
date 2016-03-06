@@ -11,6 +11,7 @@ namespace Entity
     {
         public Oferta_Mercantil ofm {get;set;}
         public List<Polizas> pl { get; set; }
+        public Orden_Compra po { get; set; }
     }
 
 }

@@ -2,6 +2,7 @@
 using Entity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace BLL
    public class OfertaMercantilBLL:PolizasBLL
     {
        ModelContex contex;
+       OrdenCompraBLL po = new OrdenCompraBLL();
        /// <summary>
        /// Metodo para registrar una oferta mercantil
        /// </summary>
@@ -21,20 +23,24 @@ namespace BLL
            {
                using (var Transaction = contex.Database.BeginTransaction())
                {
-                   var ctx = contex.Oferta_mercantil.Where(p => p.N_OFM == dto.ofm.N_OFM).FirstOrDefault();
-                   if (ctx != null)
+                   try
                    {
+                       dto.po.NO_OFM = dto.ofm.N_OFM;
+                       contex.Oferta_mercantil.Add(dto.ofm);
+                       contex.SaveChanges();
+                       Addpolizas(dto.pl, dto.ofm.N_OFM);
+                       EstadoProceso(dto.ofm.PROC_OFM);
+                       po.Addordencompra(dto.po);
+                       Transaction.Commit();
                        return 1;
                    }
-                   else
+                   catch (DbUpdateException)
                    {
-                       contex.Oferta_mercantil.Add(dto.ofm);
-                       Addpolizas(dto.pl);
-                       EstadoProceso(dto.ofm.PROC_OFM);
-                       contex.SaveChanges();
-                       Transaction.Commit();
                        return 2;
                    }
+                   catch (Exception) { throw; } 
+                       
+                       
                }
            }
        }
@@ -47,7 +53,6 @@ namespace BLL
                {
                    dto.ESTADO_PROC = "L";
                    contex.SaveChanges();
-
                }
            }
        }

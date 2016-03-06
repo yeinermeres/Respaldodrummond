@@ -9,8 +9,9 @@ namespace Dal
 {
     public class Oferta_Mercantil
     {
-        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID_OFERTA { get; set; }
+        [Key]
         public string N_OFM { get; set; }
         public string FECHA_SUSCRIP_OFM { get; set; }
         public string FECHA_INIC_OFM { get; set; }
@@ -32,6 +33,9 @@ namespace Dal
 
         [ForeignKey("OFERTAMERCANTIL")]
         private ICollection<Polizas> Polizas { get; set; }
+
+        [ForeignKey("NO_OFM")]
+        private ICollection<Orden_Compra> Orden_Compra { get; set; }
 
     }
 }

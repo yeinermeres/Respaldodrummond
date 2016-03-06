@@ -27,7 +27,7 @@ namespace WebApplication1.Controllers
         // POST: api/Polizas
         public void Post(List<Polizas> pl)
         {
-            pol.Addpolizas(pl);
+            
         }
 
         // PUT: api/Polizas/5

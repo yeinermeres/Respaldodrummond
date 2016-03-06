@@ -175,3 +175,6 @@ F:\Respaldodrummond\WebApplication1\Dal\obj\Debug\Dal.csproj.GenerateResource.Ca
 F:\Respaldodrummond\WebApplication1\Dal\obj\Debug\Dal.dll
 F:\Respaldodrummond\WebApplication1\Dal\obj\Debug\Dal.pdb
 F:\Respaldodrummond\WebApplication1\Dal\obj\Debug\Dal.Migrations.cambiopl.resources
+F:\Respaldodrummond\WebApplication1\Dal\obj\Debug\Dal.Migrations.keynueva.resources
+F:\Respaldodrummond\WebApplication1\Dal\obj\Debug\Dal.Migrations.nuevos_a.resources
+F:\Respaldodrummond\WebApplication1\Dal\obj\Debug\Dal.Migrations.PO.resources

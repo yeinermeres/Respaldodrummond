@@ -10,11 +10,11 @@ namespace BLL
     public class PolizasBLL
     {
 
-        public void Addpolizas(List<Polizas> p )
+        public void Addpolizas(List<Polizas> p ,string ofm)
         {
             using (var contex = new  ModelContex())
             {
-                var ctx = contex.Oferta_mercantil.Max(t => t.ID_OFERTA);
+        
 
                foreach (var item in p)
                {
@@ -26,7 +26,7 @@ namespace BLL
                 pl.NO_POLIZAS = item.NO_POLIZAS;
                 pl.FECHA_FINAL_POL = item.FECHA_FINAL_POL;
                 pl.FECHA_INI_POL = item.FECHA_INI_POL;
-                pl.OFERTAMERCANTIL = ctx;
+                pl.OFERTAMERCANTIL = ofm;
                 pl.COD_POLIZA = item.COD_POLIZA;
                 contex.Polizas.Add(pl);
                 

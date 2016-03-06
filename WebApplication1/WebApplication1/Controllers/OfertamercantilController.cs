@@ -27,9 +27,9 @@ namespace WebApplication1.Controllers
         }
 
         // POST: api/Ofertamercantil
-        public void Post(OjectOfm dto)
+        public int  Post(OjectOfm dto)
         {
-            of.OFMadd(dto);
+           return of.OFMadd(dto);
         }
 
         // PUT: api/Ofertamercantil/5

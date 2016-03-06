@@ -52,6 +52,7 @@
     <Compile Include="AspirantesBLL.cs" />
     <Compile Include="ConfiguracionBLL.cs" />
     <Compile Include="OfertaMercantilBLL.cs" />
+    <Compile Include="OrdenCompraBLL.cs" />
     <Compile Include="PolizasBLL.cs" />
     <Compile Include="ProcompetitivoBLL.cs" />
     <Compile Include="PromanagerBLL.cs" />

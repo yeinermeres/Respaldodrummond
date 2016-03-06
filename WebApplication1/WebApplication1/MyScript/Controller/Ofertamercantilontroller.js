@@ -253,6 +253,7 @@
 
         
         var OFM = {}
+        var OP = {}
         ID_COMPETITIVO = localStorage.getItem("ID_COMPETITIVO");
         OFM.N_OFM = $scope.OFM.N_OFM;;
         OFM.FECHA_INIC_OFM = $scope.OFM.FECHA_INIC_OFM;
@@ -266,17 +267,15 @@
         OFM.TIPO_MONEDA = $scope.OFM.TIPO_MONEDA;
         OFM.VALOR_ESTIMAO_OFM = $scope.OFM.VALOR_ESTIMAO_OFM;
         OFM.VALOR_REAL_OFM = $scope.OFM.VALOR_REAL_OFM;
-        OFM.NO_PO = $scope.OFM.NO_PO;
+        OP.NUMERO_PO = $scope.OFM.NO_PO;
         OFM.PROC_OFM = ID_COMPETITIVO;
         console.log(Polizas)
         var dto = {
             'ofm': OFM,
-            'pl':Polizas
+            'pl': Polizas,
+            'po': OP
         };
-        
-        console.log(dto);
-        if (Polizas.length === 0)
-        {
+        if (Polizas.length === 0) {
             swal({
                 title: "Mensaje de confirmación",
                 text: "¿Esta seguro que desea realizar el registro sin haber cargado polizas de soporte?",
@@ -289,43 +288,49 @@
                 closeOnCancel: false
             },
             function (isConfirm) {
-                if (isConfirm)
-                {
+                if (isConfirm) {
                     var promiseGet = OfertamercantilServices.post(dto); //The Method Call from service
-                    
+
                     promiseGet.then(function (pl) {
-                        $scope.Procesos = pl.data;
-                        swal("Mensaje de Notificacion", " se ha realizado el registro de manera exítosa.", "success");
-                        loadRecordsAspirantes();
-                        $scope.Mostrar();
-                        
+                        if (pl.data === 2) {
+                            swal("Mensaje de Notificacion", "A ocurrido un error existe una oferta mercantil con el mismo No de contrato.!", "error");
+                        }
+                        else {
+                            swal("Mensaje de Notificacion", " se ha realizado el registro de manera exítosa.", "success");
+                            loadRecord();
+                            $scope.Mostrar();
+                        }
+
                     },
                        function (errorPl) {
                            console.log('Error al cargar los datos almacenados', errorPl);
                        });
-                    
+
                 }
-                else
-                {
+                else {
                     swal("Mensaje de Notificacion", "El proceso de registro no se ha confirmado", "error");
                 }
             });
         }
-        else
-        {
+        else {
             var promiseGet = OfertamercantilServices.post(dto); //The Method Call from service
             promiseGet.then(function (pl) {
-            $scope.Procesos = pl.data;
-            swal("Mensaje de Notificacion", " se ha realizado el registro de manera exítosa.", "success");
-            $scope.initialize();
-            loadRecord();
-            $scope.Mostrar();
-             },
-               function (errorPl)
-               {
+                if (pl.data === 2) {
+                    swal("Mensaje de Notificacion", "A ocurrido un error existe una oferta mercantil con el mismo No de contrato.!", "error");
+                }
+                else {
+                    swal("Mensaje de Notificacion", " se ha realizado el registro de manera exítosa.", "success");
+                    loadRecord();
+                    $scope.Mostrar();
+                }
+
+            },
+               function (errorPl) {
                    console.log('Error al cargar los datos almacenados', errorPl);
                });
         }
+        console.log(dto);
+        
     }
 
     $scope.configuracion = function () {

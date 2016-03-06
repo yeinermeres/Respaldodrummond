@@ -78,18 +78,20 @@
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane active">
                                 <div class="panel-body">
-                                    <div class="form-group col-lg-6">
-                                        <label>Seleccione un proceso competitivo</label>
-                                        <input type="text" placeholder="" class="form-control" title="Clic para cargar listado de proceso competitivos" ng-click="Modal();" ng-model="OFM.DETALLE_PS ">
-                                    </div>
-                                    <div class="form-group col-lg-3">
-                                        <label>No de PO</label>
-                                        <input type="text" placeholder="" class="form-control" ng-model="OFM.NO_PO">
-                                    </div>
-                                    <div class="form-group col-lg-3">
-                                        <label>Nº  de Contrato</label>
-                                        <input type="text" placeholder="" class="form-control" ng-model="OFM.N_OFM">
-                                    </div>
+                                    <form role="form" name="userForm" novalidate>
+                                        <div class="form-group col-lg-6" ng-class="{'has-error':userForm.competitivo.$invalid && !userForm.competitivo.$pristine }">
+                                            <label>Seleccione un proceso competitivo*</label>
+                                            <input type="text" placeholder="" class="form-control" name="competitivo" title="Clic para cargar listado de proceso competitivos" ng-click="Modal();" ng-model="OFM.DETALLE_PS " required>
+                                        </div>
+                                        <div class="form-group col-lg-3" ng-class="{'has-error':userForm.PO.$invalid && !userForm.PO.$pristine }">
+                                            <label>No de PO* </label>
+                                            <input type="text" placeholder="" class="form-control" name="PO" ng-model="OFM.NO_PO" required>
+                                        </div>
+                                        <div class="form-group col-lg-3" ng-class="{'has-error':userForm.contrato.$invalid && !userForm.contrato.$pristine }">
+                                            <label>Nº  de Contrato*</label>
+                                            <input type="text" placeholder="" class="form-control" name="contrato" ng-model="OFM.N_OFM" required>
+                                        </div>
+                                    </form>
 
                                     <div class="form-group col-lg-4" id="data_1">
                                         <label class="font-noraml">Fecha de Suspcrición</label>
@@ -247,7 +249,7 @@
                             </div>
                         </div>
                         <div class="panel-footer">
-                            <center><button type="button" class="btn btn-primary" ng-click="Add()">Registrar</button></center>
+                            <center><button type="button" ng-disabled="userForm.$invalid" class="btn btn-primary" ng-click="Add()">Registrar</button></center>
                         </div>
                     </div>
                 </div>
