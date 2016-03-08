@@ -77,8 +77,6 @@ app.service("PromanagerService", function ($http) {
 
 });
 
-
-
 app.service("ProyectoServices", function ($http) {
 
     var uri = "http://localhost:49372";
@@ -118,7 +116,6 @@ app.service("ProyectoServices", function ($http) {
         return request;
     };
 });
-
 
 
 app.service("ProcompetitivoServices", function ($http) {
@@ -230,6 +227,11 @@ app.service("OfertamercantilServices", function ($http) {
 
     this.getAll = function (id) {
         var req = $http.get(uri + '/api/Ofertamercantil/');
+        return req;
+    };
+
+    this.getAllorder = function (id) {
+        var req = $http.get(uri + '/api/Ordercompra/' + id);
         return req;
     };
 

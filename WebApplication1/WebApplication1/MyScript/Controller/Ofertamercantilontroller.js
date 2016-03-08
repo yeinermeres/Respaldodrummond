@@ -165,6 +165,7 @@
         item += "<th></th>";
         item += "<th>Nombre de archivo</th>";
         item += "<th>Tamaño</th>";
+        item += "<th>Tipo</th>";
         item += "<th>Acciones</th>";
         item += "</tr>";
         item += "</thead>";
@@ -174,6 +175,11 @@
             item += "<td>" + parseInt(i + 1) + ".</td>";
             item += "<td>" + archivos[i].file.name + "</td>";
             item += "<td style='font-size:12px'>" + (archivos[i].file.size / (1024 * 1024)).toFixed(2) + " MG</td>";
+            item += "<td style='font-size:12px;'>";
+            item += "<select class='form-control'>";
+            item += "<option></option>";
+            item += "</select>";
+            item += "</td>";
             item += '</td>';
             item += '<td>';
             item += '<a href="javasrcritp:;" title="Remover archivo" onclick="angular.element(this).scope().removerArchivo(' + i + ');"><i class="fa fa-trash" style="font-size:20px;color:#ED5565;margin-left:20px"></i></a>';

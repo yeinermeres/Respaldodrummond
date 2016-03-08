@@ -85,10 +85,24 @@
                         <li><a href="#/Notificaciones"><i class="fa fa-bell"></i><span class="nav-label">Notificaciones</span></a></li>
                         <li><a href="#/Historial"><i class="fa fa-folder"></i><span class="nav-label">Historial</span></a></li>
                         <li>
-                            <a><i class="fa fa-cog"></i> <span class="nav-label">Configuracion</span><span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level collapse">
-                                <li><a href="#/DatosBasicos/Configuracion">Datos basicos</a></li>
-                                <li><a href="#/DatosBasicos/ProjerManajer">Projer Manager</a></li>
+                        <li class="">
+                            <a href=""><i class="fa fa-tasks"></i> <span class="nav-label">Configuración</span><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse" style="height: 0px;">
+                                <li class="">
+                                    <a href="#">Datos basicos<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level collapse" style="height: 0px;">
+                                        <li>
+                                            <a href="#/DatosBasicos/Configuracion">Proyectos</a>
+                                        </li>
+                                        <li>
+                                            <a href="#/DatosBasicos/Confiproc">Proceso competitivo</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li><a href="#/DatosBasicos/ProjerManajer">Project manager</a></li>
+                                <li><a href="#/DatosBasicos/ProjerManajer">Vendor</a></li>
+                                <li><a href="#/DatosBasicos/ProjerManajer">Polizas</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -276,6 +290,7 @@
 
     <script src="MyScript/Servicios/pServices.js"></script>
     <script src="MyScript/Controller/ConfiguracionController.js"></script>
+    <script src="MyScript/Controller/confiprocompetitivoController.js"></script>
     <script src="MyScript/Controller/ProManagerController.js"></script>
     <script src="MyScript/Controller/ProyectosController.js"></script>
     <script src="MyScript/Controller/AspiranteController.js"></script>

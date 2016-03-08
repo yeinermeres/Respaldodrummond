@@ -33,7 +33,7 @@
     $scope.Add = function () {
         var configuracion = {};
         configuracion.NOMBRE_CONFIG = $scope.Config.NOMBRE_CONFIG;
-        configuracion.TIPO_CONFIG = $scope.Config.TIPO_CONFIG;
+        configuracion.TIPO_CONFIG = 1;
         var result = ConfigService.post(configuracion);
         result.then(function () {
             setTimeout(function () {

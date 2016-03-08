@@ -78,10 +78,9 @@
                                 <tr>
                                     <th>Proyecto</th>
                                     <th>Detalle producto o servicio </th>
-                                    <th>Jurisdicción</th>
-                                    <th>Fecha inic Serv.</th>
+                                    <th>Fecha inic serv.</th>
                                     <th style="text-align:center">Tiempo de proceso</th>
-                                    <th>Fech inic Proc</th>
+                                    <th>Fecha inic proc</th>
                                     <th>Tiempo de ejecución</th>
                                     <th class="text-center">Detalle</th>
                                     <th style="text-align:center">Acciones</th>
@@ -91,7 +90,6 @@
                                 <tr class="gradeX" data-ng-repeat="Proceso in Procesos track by $index">
                                     <td>{{Proceso.PROYECTO}}</td>
                                     <td>{{Proceso.DETALLE_PS}}</td>
-                                    <td>{{Proceso.LUGAR_EJECUCION}}</td>
                                     <td>{{Proceso.FECHA_INICO}}</td>
                                     <td style="text-align:center">{{Proceso.TIEMPO_PROCESO}}</td>
                                     <td>{{Proceso.FECHA_INIC_SERVICE}}</td>
@@ -102,7 +100,7 @@
                                             <a href="#/DetalleCompetitivo" title="Ver detalle" ng-click="detalle()"><i class="fa fa-eye" style="font-size:20px;color:#1A7BB9;"></i></a>
                                         </span>
                                         <span ng-show='Proceso.ESTADO_PROC == "L"'>
-                                            <a href="#/DetalleCompetitivo" title="Ver detalle" ng-click=""><i class="fa fa-eye" style="font-size:20px;color:#1A7BB9;"></i></a>
+                                            <a href="#/DetalleCompetitivo" title="Ver detalle" ng-click="detallecontratado()"><i class="fa fa-eye" style="font-size:20px;color:#1A7BB9;"></i></a>
                                         </span>
                                           <span ng-show='Proceso.ESTADO_PROC == "A"'></span>
                                       </span>
@@ -152,11 +150,11 @@
                             <div id="tab-1" class="tab-pane active">
                                 <div class="panel-body">
                                     <div class="form-group col-lg-6">
-                                        <label>seleccione un proyecto</label>
+                                        <label>Seleccione un proyecto</label>
                                         <input type="text" placeholder="Proyecto" class="form-control" ng-click="LoadModal()" ng-model="Proyec.PROYECTO" title="Hacer clic para cargar la lista de proyectos">
                                     </div>
                                     <div class="form-group col-lg-3">
-                                        <label>Categoria</label>
+                                        <label>Categoría</label>
                                         <select class="form-control" ng-model="Proceso.CATEGORIA">
                                             <option></option>
                                             <option ng-repeat="Confi in ConfiCate">{{Confi.NOMBRE_CONFIG}}</option>
@@ -191,11 +189,11 @@
                                     </div>
 
                                     <div class="form-group col-lg-6">
-                                        <label>Descripción General</label>
+                                        <label>Descripción general</label>
                                         <input type="text" placeholder="Descripción General" class="form-control" ng-model="Proceso.DESC_GENERAL">
                                     </div>
                                     <div class="form-group col-lg-3">
-                                        <label>Complejidad Adquisición</label>
+                                        <label>Complejidad adquisición</label>
                                         <select class="form-control" ng-model="Proceso.COMP_ADQUISICION " ng-change="TimeProces()">
                                             <option></option>
                                             <option>A</option>
@@ -218,7 +216,7 @@
                                     </div>
 
                                     <div class="form-group col-lg-3">
-                                        <label>Proceso de Inicio</label>
+                                        <label>Proceso de inicio</label>
                                         <select class="form-control" ng-model="Proceso.PROCESO_INICIO ">
                                             <option></option>
                                             <option>RQ</option>
@@ -234,12 +232,12 @@
                                     </div>
 
                                     <div class="form-group col-lg-3">
-                                        <label>Tiempo del Proceso</label>
+                                        <label>Tiempo del proceso</label>
                                         <input class="form-control" type="text" ng-model="Proceso.TIEMPO_PROCESO" disabled="">
                                     </div>
 
                                     <div class="form-group col-lg-3" id="data_1">
-                                        <label class="font-noraml">Fecha de inicio del Servicio</label>
+                                        <label class="font-noraml">Fecha de inicio del servicio</label>
                                         <div class="input-group date">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
@@ -248,7 +246,7 @@
                                     </div>
 
                                     <div class="form-group col-lg-3">
-                                        <label>Tiempo de Ejecución</label>
+                                        <label>Tiempo de ejecución</label>
                                         <input class="form-control" type="number" ng-model="Proceso.TIEMPO_EJECUCION">
                                     </div>
 
@@ -257,7 +255,7 @@
                                         <input class="form-control" type="number" ng-model="Proceso.CANTIDAD">
                                     </div>
                                     <div class="form-group col-lg-6">
-                                        <label>Detalle Producto o Servicio</label>
+                                        <label>Detalle producto o servicio</label>
                                         <input class="form-control" type="text" ng-model="Proceso.DETALLE_PS">
                                     </div>
                                     <div class="form-group col-lg-3">
@@ -265,7 +263,6 @@
                                         <select class="form-control" ng-model="Proceso.UNIDAD">
                                             <option></option>
                                             <option value="Lts">Lts</option>
-                                            <option value="Gls">Gls</option>
                                             <option value="Bb">Bb</option>
                                             <option value="Gls">Gls</option>
                                             <option value="Box">Box</option>
@@ -299,7 +296,7 @@
                                     </div>
 
                                     <div class="form-group col-lg-3">
-                                        <label>Presupuesto Objetivo</label>
+                                        <label>Presupuesto objetivo</label>
                                         <input type="text" placeholder="" class="form-control" ng-model="Proceso.PRESUPUESTO">
                                     </div>
                                     <div class="form-group col-lg-3">
@@ -352,7 +349,7 @@
         <div class="modal-content animated fadeIn">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">Listado de Aspirantes</h4>
+                <h4 class="modal-title">Listado de Vendor</h4>
             </div>
             <div class="modal-body">
                 <div class="text-right">
@@ -373,7 +370,7 @@
 
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <small>Nit/Cedula: {{Aspirante.NIT_CEDULA}}</small><br />
+                                    <small>Nit : {{Aspirante.NIT_CEDULA}}</small><br />
                                 </div>
                             </div>
                         </div>
@@ -439,7 +436,7 @@
     </div>
 </div>
 
-<div class="contenedorb">
+<div class="contenedorb" style="height: 80px">
     <button class="botonF1" ng-click="Mostrar()" ng-show="visibilidadOn">
         <i class="fa fa-plus" style="font-size:36px;"></i>
     </button>

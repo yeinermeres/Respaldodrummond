@@ -8,6 +8,10 @@ var app;
                     templateUrl: 'DatosBasicos/Configuracion.html',
                     controller: 'ConfiguracionController'
                 })
+                .when('DatosBasicos/Confiproc', {
+                    templateUrl: 'DatosBasicos/Confiprocompetitivo.html',
+                    controller: 'confiprocompetitivoController'
+                })
                 .when('/DatosBasicos/ProjerManajer', {
                     templateUrl: 'DatosBasicos/ProjerManager.html',
                     controller: 'ProManagerController'

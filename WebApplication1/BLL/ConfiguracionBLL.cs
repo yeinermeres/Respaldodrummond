@@ -92,7 +92,7 @@ namespace BLL
         public List<ConfiguracionEntity> GetAllConfig() {
             using (var contex = new ModelContex())
             {
-                var dto = contex.Configuracion.ToList();
+                var dto = contex.Configuracion.Where(t=> t.TIPO_CONFIG==1).ToList();
                 List<ConfiguracionEntity> Lisconf = new List<ConfiguracionEntity>();
                 if (dto != null)
                 {

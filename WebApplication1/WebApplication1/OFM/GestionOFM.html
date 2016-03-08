@@ -80,21 +80,21 @@
                                 <div class="panel-body">
                                     <form role="form" name="userForm" novalidate>
                                         <div class="form-group col-lg-6" ng-class="{'has-error':userForm.competitivo.$invalid && !userForm.competitivo.$pristine }">
-                                            <label>Seleccione un proceso competitivo*</label>
+                                            <label>Seleccione proceso competitivo *</label>
                                             <input type="text" placeholder="" class="form-control" name="competitivo" title="Clic para cargar listado de proceso competitivos" ng-click="Modal();" ng-model="OFM.DETALLE_PS " required>
                                         </div>
                                         <div class="form-group col-lg-3" ng-class="{'has-error':userForm.PO.$invalid && !userForm.PO.$pristine }">
-                                            <label>No de PO* </label>
+                                            <label>No de PO * </label>
                                             <input type="text" placeholder="" class="form-control" name="PO" ng-model="OFM.NO_PO" required>
                                         </div>
                                         <div class="form-group col-lg-3" ng-class="{'has-error':userForm.contrato.$invalid && !userForm.contrato.$pristine }">
-                                            <label>Nº  de Contrato*</label>
+                                            <label>Nº  de contrato *</label>
                                             <input type="text" placeholder="" class="form-control" name="contrato" ng-model="OFM.N_OFM" required>
                                         </div>
                                     </form>
 
                                     <div class="form-group col-lg-4" id="data_1">
-                                        <label class="font-noraml">Fecha de Suspcrición</label>
+                                        <label>Fecha de suspcrición</label>
                                         <div class="input-group date">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
@@ -103,7 +103,7 @@
                                     </div>
 
                                     <div class="form-group col-lg-4" id="data_1">
-                                        <label class="font-noraml">Fecha de Inicio</label>
+                                        <label>Fecha de inicio</label>
                                         <div class="input-group date">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
@@ -112,7 +112,7 @@
                                     </div>
 
                                     <div class="form-group col-lg-4" id="data_1">
-                                        <label class="font-noraml">Fecha de Finalización</label>
+                                        <label>Fecha de finalización</label>
                                         <div class="input-group date">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
@@ -121,21 +121,21 @@
                                     </div>
 
                                     <div class="form-group col-lg-4">
-                                        <label>Vigencia Del contrato</label>
+                                        <label>Vigencia del contrato</label>
                                         <input type="text" placeholder="" class="form-control" ng-model="OFM.VIGENCIA" readonly="">
                                     </div>
 
                                     <div class="form-group col-lg-4">
-                                        <label>Titulo Del Contrato</label>
+                                        <label>Titulo del contrato</label>
                                         <input type="text" placeholder="" class="form-control" ng-model="OFM.TITULO_OFM">
                                     </div>
                                     <div class="form-group col-lg-4">
-                                        <label>Proveedor/Contratista</label>
+                                        <label>Proveedor/contratista</label>
                                         <input type="text" placeholder="" class="form-control" ng-model="OFM.CONTRATISTA">
                                     </div>
 
                                     <div class="form-group col-lg-6">
-                                        <label>Objeto Del Contrato</label>
+                                        <label>Objeto del contrato</label>
                                         <input type="text" placeholder="" class="form-control" ng-model="OFM.OBJETO_OFM">
                                     </div>
 
@@ -145,7 +145,7 @@
                                     </div>
 
                                     <div class="form-group col-lg-3">
-                                        <label>Tipo de Moneda</label>
+                                        <label>Tipo de moneda</label>
                                         <select class="form-control" ng-model="OFM.TIPO_MONEDA">
                                             <option></option>
                                             <option value="COP">COP</option>
@@ -154,12 +154,12 @@
                                     </div>
 
                                     <div class="form-group col-lg-4">
-                                        <label>Valor Estimado</label>
+                                        <label>Valor estimado</label>
                                         <input type="text" placeholder="" class="form-control" ng-model="OFM.VALOR_ESTIMAO_OFM">
                                     </div>
 
                                     <div class="form-group col-lg-4">
-                                        <label>Valor Real</label>
+                                        <label>Valor real</label>
                                         <input type="text" placeholder="" class="form-control" ng-model="OFM.VALOR_REAL_OFM">
                                     </div>
                                 </div>
@@ -174,11 +174,11 @@
                                                     <th></th>
                                                     <th>Numero poliza</th>
                                                     <th>Fecha inicio</th>
-                                                    <th>Fecha de Finalización</th>
+                                                    <th>Fecha de finalización</th>
                                                     <th>Aseguradora</th>
                                                     <th>Valor</th>
-                                                    <th>Tipo de Poliza</th>
-                                                    <th>Valor Asegurador</th>
+                                                    <th>Tipo de poliza</th>
+                                                    <th>Valor asegurador</th>
                                                     <th></th>
                                                     <th colspan="3" style="text-align: center">Acciones</th>
                                                     <th></th>
@@ -208,11 +208,11 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td><input type="text" placeholder="" class="form-control" ng-model="Poliza.ASEGURADORA"></td>
+                                                    <td><select class="form-control" ng-model="Poliza.ASEGURADORA"></select></td>
 
                                                     <td><input type="text" placeholder="" class="form-control" ng-model="Poliza.VALOR_POLIZA"></td>
 
-                                                    <td><input type="text" placeholder="" class="form-control" ng-model="Poliza.TIPO_POLIZA"></td>
+                                                    <td><select class="form-control" ng-model="Poliza.TIPO_POLIZA"></select></td>
 
                                                     <td><input type="number" placeholder="" class="form-control" ng-model="Poliza.VALOR_ASEGURADO"></td>
 
@@ -292,7 +292,7 @@
                                         <th>Objeto de contrato</th>
                                         <th>Fech inic proceso</th>
                                         <th>Fecha de suscripción</th>
-                                        <th>Lugar de ejecucion</th>
+                                        <th>Lugar de ejecución</th>
                                         <th>Valor estimado</th>
                                         <th>Detalle</th>
                                         <th>Acciones</th>
