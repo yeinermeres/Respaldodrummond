@@ -182,7 +182,7 @@
         console.log("SELECCION ASP : " + $scope.Aspirante.ASPIRANTE_ID)
         swal({
             title: "Mensaje de confirmación",
-            text: "¿Esta seguro que desea agregar este aspirante?" +
+            text: "¿Esta seguro que desea agregar este Vendor?" +
             "\n" + $scope.Aspirante.NOM_RAZONSOCIAL,
             type: "warning",
             showCancelButton: true,

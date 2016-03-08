@@ -68,13 +68,10 @@
                 <a href="index.html">Inicio</a>
             </li>
             <li>
-                <a>Proyectos</a>
-            </li>
-            <li>
-                <a href="#/Proyectos/ProCompetitivo">Proceso competitivo</a>
+                <a>Configuración</a>
             </li>
             <li class="active">
-                <strong>Registro Aspirante </strong>
+                <strong>Registro de vendor </strong>
             </li>
         </ol>
 
@@ -85,79 +82,112 @@
 </div>
 
 <div class="wrapper wrapper-content animated fadeIn">
+
     <div class="row">
         <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title" >
-                    <h2>Registrar Aspirantes</h2>
+            <div class="ibox">
+                <div class="ibox-title">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <h2>Listado de vendors</h2>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="input-group">
+                                <input type="text" placeholder="Buscador" class="input-sm form-control" ng-model="filtro"> <span class="input-group-btn">
+                                    <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="hr-line-dashed"></div>
                 </div>
-                <div class="tabs-container">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="DatoBasic#tab-1"> Datos Basicos</a></li>
-                        <li class=""><a data-toggle="tab" href="DatoBasic#tab-2">Lista de Precio</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div id="tab-1" class="tab-pane active">
-                            <div class="panel-body">
-                                <form role="form" name="userForm" novalidate>
-                                    <div class="form-group col-lg-4" ng-class="{ 'has-error' : userForm.id.$invalid && !userForm.id.$pristine }">
-                                        <label>Nit*</label>
-                                        <input type="text" name="id" ng-model="Asp.NIT_CEDULA" class="form-control" required>
-                                    </div>
-                                    <div class="form-group col-lg-4" ng-class="{ 'has-error' : userForm.nombre.$invalid && !userForm.nombre.$pristine }">
-                                        <label>Nombre /Razon social*</label>
-                                        <input type="text" name="nombre" ng-model="Asp.NOM_RAZONSOCIAL" class="form-control" required>
-                                    </div>
-                                    <div class="form-group col-lg-4" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
-                                        <label>Correo*</label>
-                                        <input type="text" name="email" ng-model="Asp.CORREO" class="form-control" required>
-                                    </div>
-                                    <div class="form-group col-lg-3">
-                                        <label>Direccion</label>
-                                        <input type="text" class="form-control" ng-model="Asp.DIRECCION">
-                                    </div>
-                                    <div class="form-group col-lg-3">
-                                        <label>Ciudad</label>
-                                        <input type="text" class="form-control" ng-model="Asp.CIUDAD">
-                                    </div>
-                                    <div class="form-group col-lg-3">
-                                        <label>Departamento</label>
-                                        <input type="text" class="form-control" ng-model="Asp.DEPARTAMENTO">
-                                    </div>
-                                    <div class="form-group col-lg-3">
-                                        <label>Telefono</label>
-                                        <input type="text" class="form-control" ng-model="Asp.TELEFONO">
-                                    </div>
-                                </form>
-                                
-                            </div>
-                        </div>
+                <div class="ibox-content" style="display: block;">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nit</th>
+                                <th>Nombre/Razón social</th>
+                                <th>Correo</th>
+                                <th style="text-align:center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="gradeX" ng-repeat="Aspirante in Aspirantes track by $index">
+                                <td>
+                                    {{Aspirante.NIT_CEDULA}}
+                                </td>
+                                <td>
+                                    {{Aspirante.NOM_RAZONSOCIAL}}
+                                </td>
+                                <td>
+                                    {{Aspirante.CORREO}}
+                                </td>
+                                <td style="width:120px;text-align:center" class="center">
+                                    <a href="javasrcritp:;" title="Editar datos" ng-click=""><i class="fa fa-edit" style="font-size:20px;color:#1A7BB9;padding-right:5px"></i></a>
+                                </td>
+                            </tr>
 
-                        <div id="tab-2" class="tab-pane">
-                            <div class="panel-body">
-                                <div class="col-lg-12">
-                                    <section id="envio">
-                                        <form id="myForm">
-                                            <input type="file" id="files" name="files[]" onchange="angular.element(this).scope().visualizar()" multiple="multiple">
-                                        </form>
-                                    </section>
-                                </div>
-                                <br />
-                                <br />
-                                <br />
-                                <div class="col-lg-12">
-                                    <div id="lista"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="panel-footer">
-                        <center><button type="button" class="btn btn-primary" ng-disabled="userForm.$invalid" ng-click="Add()">Registrar</button></center>
-                    </div>
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="modal inmodal" id="modalVendors" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated fadeIn">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" style="font-weight:normal;font-size:18px">Registro de vendor</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form" name="userForm" novalidate>
+                        <div class="form-group" ng-class="{ 'has-error' : userForm.id.$invalid && !userForm.id.$pristine }">
+                            <label>Nit*</label>
+                            <input type="text" name="id" ng-model="Asp.NIT_CEDULA" class="form-control" required>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : userForm.nombre.$invalid && !userForm.nombre.$pristine }">
+                            <label>Nombre /Razón social*</label>
+                            <input type="text" name="nombre" ng-model="Asp.NOM_RAZONSOCIAL" class="form-control" required>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                            <label>Correo*</label>
+                            <input type="text" name="email" ng-model="Asp.CORREO" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Dirección</label>
+                            <input type="text" class="form-control" ng-model="Asp.DIRECCION">
+                        </div>
+                        <div class="form-group">
+                            <label>Ciudad</label>
+                            <input type="text" class="form-control" ng-model="Asp.CIUDAD">
+                        </div>
+                        <div class="form-group">
+                            <label>Departamento</label>
+                            <input type="text" class="form-control" ng-model="Asp.DEPARTAMENTO">
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input type="text" class="form-control" ng-model="Asp.TELEFONO">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-white" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success" >Importar</button>
+                    <button type="button" class="btn btn-primary" ng-disabled="userForm.$invalid" ng-click="Add()">Registrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contenedorb" style="height: 80px">
+        <button class="botonF1" data-toggle="modal" data-target="#modalVendors">
+            <i class="fa fa-plus" style="font-size:36px;"></i>
+        </button>
+        
     </div>
 </div>

@@ -54,49 +54,9 @@
     <Compile Include="Aspirantes.cs" />
     <Compile Include="Aspirante_Proceso.cs" />
     <Compile Include="Configuraciones.cs" />
-    <Compile Include="Migrations\201602230247383_L.cs" />
-    <Compile Include="Migrations\201602230247383_L.Designer.cs">
-      <DependentUpon>201602230247383_L.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602231529578_ofm.cs" />
-    <Compile Include="Migrations\201602231529578_ofm.Designer.cs">
-      <DependentUpon>201602231529578_ofm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602231606021_Polizas.cs" />
-    <Compile Include="Migrations\201602231606021_Polizas.Designer.cs">
-      <DependentUpon>201602231606021_Polizas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602232040473_poliza-cod.cs" />
-    <Compile Include="Migrations\201602232040473_poliza-cod.Designer.cs">
-      <DependentUpon>201602232040473_poliza-cod.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602241432372_add-estadoPRC.cs" />
-    <Compile Include="Migrations\201602241432372_add-estadoPRC.Designer.cs">
-      <DependentUpon>201602241432372_add-estadoPRC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602241546099_FR-OFM-PROC.cs" />
-    <Compile Include="Migrations\201602241546099_FR-OFM-PROC.Designer.cs">
-      <DependentUpon>201602241546099_FR-OFM-PROC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602291435330_aspirantes.cs" />
-    <Compile Include="Migrations\201602291435330_aspirantes.Designer.cs">
-      <DependentUpon>201602291435330_aspirantes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603021624361_cambio-pl.cs" />
-    <Compile Include="Migrations\201603021624361_cambio-pl.Designer.cs">
-      <DependentUpon>201603021624361_cambio-pl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603031936559_keynueva.cs" />
-    <Compile Include="Migrations\201603031936559_keynueva.Designer.cs">
-      <DependentUpon>201603031936559_keynueva.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603031946146_nuevos_a.cs" />
-    <Compile Include="Migrations\201603031946146_nuevos_a.Designer.cs">
-      <DependentUpon>201603031946146_nuevos_a.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603032130326_PO.cs" />
-    <Compile Include="Migrations\201603032130326_PO.Designer.cs">
-      <DependentUpon>201603032130326_PO.cs</DependentUpon>
+    <Compile Include="Migrations\201603081510144_cambios.cs" />
+    <Compile Include="Migrations\201603081510144_cambios.Designer.cs">
+      <DependentUpon>201603081510144_cambios.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Oferta_Mercantil.cs" />
@@ -117,38 +77,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602230247383_L.resx">
-      <DependentUpon>201602230247383_L.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602231529578_ofm.resx">
-      <DependentUpon>201602231529578_ofm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602231606021_Polizas.resx">
-      <DependentUpon>201602231606021_Polizas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602232040473_poliza-cod.resx">
-      <DependentUpon>201602232040473_poliza-cod.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602241432372_add-estadoPRC.resx">
-      <DependentUpon>201602241432372_add-estadoPRC.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602241546099_FR-OFM-PROC.resx">
-      <DependentUpon>201602241546099_FR-OFM-PROC.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602291435330_aspirantes.resx">
-      <DependentUpon>201602291435330_aspirantes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603021624361_cambio-pl.resx">
-      <DependentUpon>201603021624361_cambio-pl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603031936559_keynueva.resx">
-      <DependentUpon>201603031936559_keynueva.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603031946146_nuevos_a.resx">
-      <DependentUpon>201603031946146_nuevos_a.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603032130326_PO.resx">
-      <DependentUpon>201603032130326_PO.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603081510144_cambios.resx">
+      <DependentUpon>201603081510144_cambios.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

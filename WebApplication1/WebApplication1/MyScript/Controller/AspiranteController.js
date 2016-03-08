@@ -2,6 +2,18 @@
     $scope.Asp = {}; //Objeto Actual
     $scope.Aspirantes = []; //Listado de Objetos
 
+    $scope.ON = true
+    $scope.OFF = false
+
+    $scope.Mostrar = function () {
+        $scope.ON = false
+        $scope.OFF = true
+    }
+
+    $scope.Ocultar = function () {
+        $scope.ON = true
+        $scope.OFF = false
+    }
 
     archivos = [];
     var file;
@@ -31,6 +43,7 @@
         $scope.Asp.TELEFONO = "";
     }
 
+    
     function relacion() {
         $scope.Asp.ID_ASPIRANTE = 0;
         var AspProceso = {};
@@ -69,14 +82,11 @@
 
             window.location = "#/Proyectos/ProCompetitivo"
         },
-        /*PENDIENTE
-        setTimeout(function () { $scope.Cargartodo() }, 1000),
-        */
         function (errorpl) {
             console.log(errorpl)
         });        
     }
-
+    
     $scope.Add = function () {
         var aspirante = {};
 
@@ -112,12 +122,9 @@
             }, 1100);
             loadRecords();
         },
-        setTimeout(function () { relacion() }, 1100),
         function (errorpl) {
             console.log(errorpl)
         });
-        
-        
     };
         
     $scope.visualizar = function () {
