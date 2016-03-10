@@ -1,6 +1,7 @@
-﻿app.controller('AspiranteController', function ($scope, AspiranteServices) {
+﻿app.controller('AspiranteController', function ($scope, AspiranteServices, XLSXReaderService, $http) {
     $scope.Asp = {}; //Objeto Actual
     $scope.Aspirantes = []; //Listado de Objetos
+    $scope.editMode = false; // Modo de Edición
 
     $scope.ON = true
     $scope.OFF = false
@@ -16,8 +17,9 @@
     }
 
     archivos = [];
+    
     var file;
-   
+
     inicialice();
 
     loadRecords();
@@ -41,50 +43,6 @@
         $scope.Asp.CIUDAD = "";
         $scope.Asp.DEPARTAMENTO = "";
         $scope.Asp.TELEFONO = "";
-    }
-
-    
-    function relacion() {
-        $scope.Asp.ID_ASPIRANTE = 0;
-        var AspProceso = {};
-        var DOCUMENTO_PRO = localStorage.getItem("PROCESO");
-
-        AspProceso.ID_ASPIRANTE = $scope.Asp.ID_ASPIRANTE;
-        AspProceso.ID_PROCESO = DOCUMENTO_PRO;
-
-        console.log("CONFIRMAR ID_ASPIRANTE " + $scope.Asp.ID_ASPIRANTE);
-        console.log("CONFIRMAR ID_COMPETITIVO " + DOCUMENTO_PRO);
-        console.log("RUTA ");
-
-        var result = AspiranteServices.relacion(AspProceso);
-        result.then(function () {
-            setTimeout(function () {
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "progressBar": false,
-                    "preventDuplicates": false,
-                    "positionClass": "toast-bottom-full-width",
-                    "onclick": null,
-                    "showDuration": "400",
-                    "hideDuration": "1000",
-                    "timeOut": "7000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
-            }, 1100);
-            loadRecords()
-            localStorage.removeItem("ASPIRANTE")
-            localStorage.removeItem("PROCESO")
-
-            window.location = "#/Proyectos/ProCompetitivo"
-        },
-        function (errorpl) {
-            console.log(errorpl)
-        });        
     }
     
     $scope.Add = function () {
@@ -124,6 +82,54 @@
         },
         function (errorpl) {
             console.log(errorpl)
+        });
+    };
+
+    $scope.Edit = function () {
+        $scope.Asp = this.Asp;
+        $scope.editMode = true;
+        $('#ModalEditar').modal('show');
+    }
+
+    //Function Para Actualizar
+    $scope.update = function () {
+        var aspirante = {};
+
+        aspirante.ASPIRANTE_ID = $scope.Asp.ASPIRANTE_ID;
+        aspirante.NIT = $scope.Asp.NIT;
+        aspirante.NOM_RAZONSOCIAL = $scope.Asp.NOM_RAZONSOCIAL;
+        aspirante.CORREO = $scope.Asp.CORREO;
+        aspirante.DIRECCION = $scope.Asp.DIRECCION;
+        aspirante.CIUDAD = $scope.Asp.CIUDAD;
+        aspirante.DEPARTAMENTO = $scope.Asp.DEPARTAMENTO;
+        aspirante.TELEFONO = $scope.Asp.TELEFONO;
+
+        var promisePost = AspiranteServices.put(aspirante.ASPIRANTE_ID, aspirante);
+        promisePost.then(function (d) {
+            setTimeout(function () {
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "progressBar": false,
+                    "preventDuplicates": false,
+                    "positionClass": "toast-bottom-full-width",
+                    "onclick": null,
+                    "showDuration": "400",
+                    "hideDuration": "1000",
+                    "timeOut": "7000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+                toastr.success("Datos actualizados de manera exitosa.", "SAC-Notificaciones");
+
+            }, 1200);
+            $('#ModalEditar').modal('hide');
+            loadRecords();
+        }, function (err) {
+            alert("Some Error Occured " + JSON.stringify(err));
         });
     };
         
@@ -187,5 +193,116 @@
         });
         
     }
+
+    $scope.cancel = function () {
+        console.log($scope.editMode);
+        if (!$scope.editMode) {
+            inicialice();
+        }
+        $('#ModalEditar').modal('hide');
+        $scope.editMode = false;
+        inicialice();
+    };
+
+    $scope.mensaje = false;
+    $scope.error = false;
+    $scope.showPreview = false;
+    $scope.showJSONPreview = true;
+    $scope.json_string = "";
+
+    $scope.fileChanged = function (files) {
+        $scope.isProcessing = true;
+        $scope.sheets = [];
+        $scope.excelFile = files[0];
+        XLSXReaderService.readFile($scope.excelFile, $scope.showPreview, $scope.showJSONPreview).then(function (xlsxData) {
+            $scope.sheets = xlsxData.sheets;
+            $scope.isProcessing = false;
+            // mi ediciones
+            var file_name = document.getElementById("uploadBtn").value;
+            document.getElementById("uploadFile").value = file_name.substring(12, file_name.length);
+
+        });
+    };
+
+    $scope.EnviarLista = function () {
+        // reiniciamos siempre el modal
+        $scope.mensaje = false;
+        $scope.error = false;
+        $(".progress").css("display", "block");
+        $(".progress-bar").css("width", "0%");
+
+        try {
+            if ($scope.sheets !== undefined) {
+                var obj2 = $scope.sheets[$scope.sheet];
+                var obj = [];
+                for (var j = 0; j < obj2.length; j++) {
+                    if (obj2[j].Nit !== "" && obj2[j].Nit !== null && obj2[j].Nit !== undefined) {
+                        obj.push(obj2[j]);
+                    }
+                }
+                //console.log($scope.sheets["Sheet1"]);
+                /* ---------------------------------BARRA PROGRESO ---------------------------------*/
+                var barra = $(".progress-bar");
+
+                barra.width("100%");
+
+                if (obj[0].Nit === undefined) {
+                    alert("No se encuentra el campo cedula");
+                } else {
+                    $scope.contador = 0;
+                    $scope.tamano = obj.length;
+                    for (var i = 0; i < obj.length; i++) {
+                        if (obj[i].Nit !== "" && obj[i].Nit !== null && obj[i].Nit !== undefined) {
+                            var empleado = {
+                                id: null,
+                                Nit: obj[i].Nit,
+                                Nom_RazonSocial: obj[i].Nom_RazonSocial,
+                                Correo: obj[i].Correo,
+                                Direccion: obj[i].Direccion,
+                                Ciudad: obj[i].Ciudad,
+                                Departamento: obj[i].Departamento,
+                                Telefono: obj[i].Telefono
+                            }
+                            $http.post("/api/aspirantes/", empleado).then(function () {
+                                $scope.contador++;
+                                setTimeout(function () {
+                                    toastr.options = {
+                                        "closeButton": true,
+                                        "debug": false,
+                                        "progressBar": false,
+                                        "preventDuplicates": false,
+                                        "positionClass": "toast-bottom-full-width",
+                                        "onclick": null,
+                                        "showDuration": "400",
+                                        "hideDuration": "1000",
+                                        "timeOut": "7000",
+                                        "extendedTimeOut": "1000",
+                                        "showEasing": "swing",
+                                        "hideEasing": "linear",
+                                        "showMethod": "fadeIn",
+                                        "hideMethod": "fadeOut"
+                                    };
+                                    toastr.success("Se realizado el registro de manera exitosa.", "SAC-Notificaciones");
+                                    
+                                }, 1100);
+                                loadRecords();
+                            },
+                                function (errorpl) {
+                                    console.log(errorpl)
+                                });
+                        } else {
+                            alert("No se encuentra elnit en la fila" + (Number(i) + 2));
+                        }
+                    }
+                }
+
+            } else {
+                $scope.error = true;
+            }
+        } catch (Exepcion) {
+            alert("Debe seleccionar una hoja valida");
+        }
+    };
+
 
 });

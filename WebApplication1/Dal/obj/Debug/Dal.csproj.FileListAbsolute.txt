@@ -188,5 +188,6 @@ C:\Users\tecnoparque\Documents\GitHub\Respaldodrummond\WebApplication1\Dal\bin\D
 C:\Users\tecnoparque\Documents\GitHub\Respaldodrummond\WebApplication1\Dal\obj\Debug\Dal.csprojResolveAssemblyReference.cache
 C:\Users\tecnoparque\Documents\GitHub\Respaldodrummond\WebApplication1\Dal\obj\Debug\Dal.dll
 C:\Users\tecnoparque\Documents\GitHub\Respaldodrummond\WebApplication1\Dal\obj\Debug\Dal.pdb
-C:\Users\tecnoparque\Documents\GitHub\Respaldodrummond\WebApplication1\Dal\obj\Debug\Dal.Migrations.cambios.resources
+C:\Users\tecnoparque\Documents\GitHub\Respaldodrummond\WebApplication1\Dal\obj\Debug\Dal.Migrations.Prueba2.resources
 C:\Users\tecnoparque\Documents\GitHub\Respaldodrummond\WebApplication1\Dal\obj\Debug\Dal.csproj.GenerateResource.Cache
+C:\Users\tecnoparque\Documents\GitHub\Respaldodrummond\WebApplication1\Dal\obj\Debug\Dal.Migrations.prueba3.resources

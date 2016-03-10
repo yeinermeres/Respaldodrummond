@@ -26,40 +26,12 @@
         transition: .1s;
     }
 
-        .botonF1:active {
-            transform: scale(1.1);
-        }
-
-    .foo {
-        display: block;
-        position: relative;
-        width: 300px;
-        margin: auto;
-        cursor: pointer;
-        border: 0;
-        height: 60px;
-        border-radius: 5px;
-        outline: 0;
+    .botonF1:active {
+        transform: scale(1.1);
     }
 
-        .foo:after {
-            transition: 200ms all ease;
-            border-bottom: 3px solid rgba(0,0,0,0.2);
-            background: #D4D0CE;
-            text-shadow: 0 2px 0 rgba(0,0,0,0.2);
-            color: #fff;
-            font-size: 20px;
-            text-align: center;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: block;
-            content: 'Adjuntar Documentos';
-            line-height: 60px;
-            border-radius: 5px;
-        }
+
+
 </style>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
@@ -98,8 +70,42 @@
                                 </span>
                             </div>
                         </div>
+                        
                     </div>
+
                     <div class="hr-line-dashed"></div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 " style="padding:7px;margin-left:10px;">
+                            <h5>Seleccione el archivo que desea subir:</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+
+                        <div class="col-lg-4 col-md-4 col-sm-12" type="file" style="padding: 12px; margin-left: 10px;">
+
+                            <div class="fileUpload btn verde" style="color: #9E9E9E; transform: translate(-15px,-15px); ">
+                                <input type="file" id="uploadBtn" name="excel_file" accept=".xlsx" onchange="angular.element(this).scope().fileChanged(this.files);" required="true" class="upload" />
+                            </div>
+                        </div>
+                        
+
+                        <div class="col-lg-4 col-md-4 col-sm-12" ng-show="sheets" style="padding:7px;">
+                            <div class="form-group">
+                                <label for="input" class="pull-left control-label">Seleccione el Libro:</label>
+                                <div class="col-lg-7 col-md-6" style="margin-top:-8px;">
+                                    <select ng-model="sheet" id="input" class="form-control" required="required">
+                                        <option ng-repeat="(key, value) in sheets">{{key}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-12 " ng-show="sheets">
+                            <button type="button" class="btn btn-success" ng-click="EnviarLista()">Guardar</button>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div class="ibox-content" style="display: block;">
                     <table class="table table-striped">
@@ -112,18 +118,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="gradeX" ng-repeat="Aspirante in Aspirantes track by $index">
+                            <tr class="gradeX" ng-repeat="Asp in Aspirantes track by $index">
                                 <td>
-                                    {{Aspirante.NIT_CEDULA}}
+                                    {{Asp.NIT}}
                                 </td>
                                 <td>
-                                    {{Aspirante.NOM_RAZONSOCIAL}}
+                                    {{Asp.NOM_RAZONSOCIAL}}
                                 </td>
                                 <td>
-                                    {{Aspirante.CORREO}}
+                                    {{Asp.CORREO}}
                                 </td>
                                 <td style="width:120px;text-align:center" class="center">
-                                    <a href="javasrcritp:;" title="Editar datos" ng-click=""><i class="fa fa-edit" style="font-size:20px;color:#1A7BB9;padding-right:5px"></i></a>
+                                    <a href="javasrcritp:;" title="Editar datos" ng-click="Edit(Asp)"><i class="fa fa-edit" style="font-size:20px;color:#1A7BB9;padding-right:5px"></i></a>
                                 </td>
                             </tr>
 
@@ -135,6 +141,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="modal inmodal" id="modalVendors" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
@@ -184,10 +191,61 @@
         </div>
     </div>
 
+    <div class="modal inmodal" id="ModalEditar" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated fadeIn">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" style="font-weight:normal;font-size:18px">Registro de vendor</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label>Nit*</label>
+                            <input type="text" name="id" ng-model="Asp.NIT" class="form-control" >
+                        </div>
+                        <div class="form-group" >
+                            <label>Nombre /Razón social*</label>
+                            <input type="text" name="nombre" ng-model="Asp.NOM_RAZONSOCIAL" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label>Correo*</label>
+                            <input type="text" name="email" ng-model="Asp.CORREO" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label>Dirección</label>
+                            <input type="text" class="form-control" ng-model="Asp.DIRECCION">
+                        </div>
+                        <div class="form-group">
+                            <label>Ciudad</label>
+                            <input type="text" class="form-control" ng-model="Asp.CIUDAD">
+                        </div>
+                        <div class="form-group">
+                            <label>Departamento</label>
+                            <input type="text" class="form-control" ng-model="Asp.DEPARTAMENTO">
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input type="text" class="form-control" ng-model="Asp.TELEFONO">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-white" data-dismiss="modal" ng-click="cancel()">Cerrar</button>
+                    <button type="button" class="btn btn-primary" ng-click="update()">Actualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="contenedorb" style="height: 80px">
         <button class="botonF1" data-toggle="modal" data-target="#modalVendors">
             <i class="fa fa-plus" style="font-size:36px;"></i>
         </button>
-        
     </div>
 </div>
+
+
+

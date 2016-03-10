@@ -1,6 +1,32 @@
 var app;
 (function () {
     app = angular.module("myApp", ["ui.bootstrap", 'ngRoute', "ngTable"]);
+
+    app.factory("XLSXReaderService", ['$q', '$rootScope',
+    function ($q, $rootScope) {
+        var service = function (data) {
+            angular.extend(this, data);
+        }
+
+        service.readFile = function (file, readCells, toJSON) {
+            var deferred = $q.defer();
+
+            XLSXReader(file, readCells, toJSON, function (data) {
+                $rootScope.$apply(function () {
+                    deferred.resolve(data);
+                    console.log(data.sheets.Hoja1);
+                });
+            });
+
+            return deferred.promise;
+        }
+
+
+        return service;
+    }
+    ]);
+
+
     app.config(['$routeProvider', '$locationProvider',
         function AppConfig($routeProvider, $locationProvider) {
             $routeProvider

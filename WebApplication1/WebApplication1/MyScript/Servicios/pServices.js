@@ -204,9 +204,13 @@ app.service("AspiranteServices", function ($http) {
         return request;
     };
 
-    this.relacion = function (relacion) {
-        var req = $http.post(uri + '/api/aspiranteproceso', relacion);
-        return req;
+    this.put = function (id, aspirante) {
+        var request = $http({
+            method: "put",
+            url: uri + '/api/aspirantes/' + id,
+            data: aspirante
+        });
+        return request;
     };
 });
 

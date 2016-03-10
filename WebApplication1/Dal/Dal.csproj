@@ -54,9 +54,13 @@
     <Compile Include="Aspirantes.cs" />
     <Compile Include="Aspirante_Proceso.cs" />
     <Compile Include="Configuraciones.cs" />
-    <Compile Include="Migrations\201603081510144_cambios.cs" />
-    <Compile Include="Migrations\201603081510144_cambios.Designer.cs">
-      <DependentUpon>201603081510144_cambios.cs</DependentUpon>
+    <Compile Include="Migrations\201603092111252_Prueba2.cs" />
+    <Compile Include="Migrations\201603092111252_Prueba2.Designer.cs">
+      <DependentUpon>201603092111252_Prueba2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603092117426_prueba3.cs" />
+    <Compile Include="Migrations\201603092117426_prueba3.Designer.cs">
+      <DependentUpon>201603092117426_prueba3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Oferta_Mercantil.cs" />
@@ -77,8 +81,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603081510144_cambios.resx">
-      <DependentUpon>201603081510144_cambios.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603092111252_Prueba2.resx">
+      <DependentUpon>201603092111252_Prueba2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603092117426_prueba3.resx">
+      <DependentUpon>201603092117426_prueba3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

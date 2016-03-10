@@ -262,6 +262,8 @@
     <Content Include="css\animate.css" />
     <Content Include="css\bootstrap-material-design.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\fileinput.css" />
+    <Content Include="css\fileinput.min.css" />
     <Content Include="css\patterns\3.png" />
     <Content Include="css\patterns\4.png" />
     <Content Include="css\patterns\header-profile-skin-1.png" />
@@ -429,6 +431,8 @@
     <Content Include="js\demo\peity-demo.js" />
     <Content Include="js\demo\rickshaw-demo.js" />
     <Content Include="js\demo\sparkline-demo.js" />
+    <Content Include="js\fileinput.js" />
+    <Content Include="js\fileinput.min.js" />
     <Content Include="js\inspinia.js" />
     <Content Include="js\jquery-2.1.1.js" />
     <Content Include="js\jquery-ui-1.10.4.min.js" />
@@ -520,6 +524,10 @@
     <Content Include="MyScript\Controller\Ofertamercantilontroller.js" />
     <Content Include="MyScript\Router\Enrutador.js" />
     <Content Include="MyScript\Servicios\pServices.js" />
+    <Content Include="js\xlsx\jszip.js" />
+    <Content Include="js\xlsx\lodash.min.js" />
+    <Content Include="js\xlsx\xlsx-reader.js" />
+    <Content Include="js\xlsx\xlsx.js" />
     <Content Include="Notificaciones\Notificaciones.html" />
     <Content Include="OFM\GestionOFM.html" />
     <Content Include="OFM\OP\Ordencompra.html" />
