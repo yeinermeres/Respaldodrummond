@@ -47,7 +47,7 @@
             <li class="active">
                 <strong>Registro</strong>
             </li>
-            
+
         </ol>
     </div>
     <div class="col-lg-2">
@@ -130,8 +130,8 @@
                                         <input type="text" placeholder="" class="form-control" ng-model="OFM.TITULO_OFM">
                                     </div>
                                     <div class="form-group col-lg-4">
-                                        <label>Proveedor/contratista</label>
-                                        <input type="text" placeholder="" class="form-control" ng-model="OFM.CONTRATISTA">
+                                        <label>Vendor</label>
+                                        <input type="text" placeholder="" class="form-control" ng-model="OFM.VENDOR">
                                     </div>
 
                                     <div class="form-group col-lg-6">
@@ -172,7 +172,7 @@
                                             <thead>
                                                 <tr>
                                                     <th></th>
-                                                    <th>Numero poliza</th>
+                                                    <th style="width:120px">Numero poliza</th>
                                                     <th>Fecha inicio</th>
                                                     <th>Fecha de finalización</th>
                                                     <th>Aseguradora</th>
@@ -189,7 +189,7 @@
                                                     <td></td>
                                                     <td><input type="text" placeholder="" class="form-control" ng-model="Poliza.COD_POLIZA"></td>
 
-                                                    <td style="width:180px;">
+                                                    <td style="width:160px;">
                                                         <div class="form-group" id="data_2">
                                                             <div class="input-group date">
                                                                 <span class="input-group-addon">
@@ -199,7 +199,7 @@
                                                         </div>
                                                     </td>
 
-                                                    <td style="width:180px;">
+                                                    <td style="width:160px;">
                                                         <div class="form-group" id="data_3">
                                                             <div class="input-group date">
                                                                 <span class="input-group-addon">
@@ -208,27 +208,33 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td><select class="form-control" ng-model="Poliza.ASEGURADORA"></select></td>
+                                                    <td style="width:210px;">
+                                                        <select class="select2_demo_1 form-control" ng-model="Poliza.NOMBRE_ASG" style="width:210px;" ng-change="ChangeAseguradora()">
+                                                            <option data-ng-repeat="Aseguradora in Aseguradoras">{{Aseguradora.NOMBRE_ASG}}</option>
+                                                        </select>
+                                                    </td>
 
                                                     <td><input type="text" placeholder="" class="form-control" ng-model="Poliza.VALOR_POLIZA"></td>
 
-                                                    <td><select class="form-control" ng-model="Poliza.TIPO_POLIZA"></select></td>
+                                                    <td style="width:210px;">
+                                                        <select class="form-control" ng-model="Poliza.NOMBRE_AMP" id="select2_demo_2" style="width:210px;" ng-change="ChangeAmparo()">
+                                                            <option data-ng-repeat="Amparo in Amparos">{{Amparo.NOMBRE_AMP}}</option>
+                                                        </select>
+                                                    </td>
 
                                                     <td><input type="number" placeholder="" class="form-control" ng-model="Poliza.VALOR_ASEGURADO"></td>
 
-                                                    <td>
-                                                        
-                                                    </td>
+                                                    <td></td>
                                                     <td style="padding-top:10px">
                                                         <a href="javasrcritp:;" title="guardar" id="guardar" ng-click="CargarPoliza();"><i class="fa fa-save" style="font-size:20px;color:#1A7BB9;padding-right:5px"></i></a>
                                                     </td>
                                                     <!--
                                                     <td style="padding-top:10px">
-                                                    </td>    
+                                                    </td>
                                                     -->
-                                                    
-                                                </tr>    
-                                            </tbody>      
+
+                                                </tr>
+                                            </tbody>
                                         </table>
                                         <div id="lispoliza">
 
@@ -259,7 +265,7 @@
 
         </div>
 
-       
+
     </div>
 
     <div class="row" ng-show="visibilidadOn">
@@ -329,7 +335,7 @@
         </div>
     </div>
 
-    </div>
+</div>
 
 <div class="modal inmodal" id="modalprocesos" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -372,7 +378,7 @@
     </button>
 </div>
 <script>
-     $(document).ready(function () {
+    $(document).ready(function () {
         $('#data_1 .input-group.date').datepicker({
             todayBtn: "linked",
             keyboardNavigation: false,
@@ -396,5 +402,11 @@
             calendarWeeks: true,
             autoclose: true
         });
+
+
+        $(".select2_demo_1").select2();
+        $("#select2_demo_2").select2();
+        document.getElementById("body").className = "md-skin fixed-sidebar fixed-nav pace-done mini-navbar";
+
     });
 </script>

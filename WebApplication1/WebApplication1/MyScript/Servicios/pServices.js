@@ -8,6 +8,12 @@ app.service("ConfigService", function ($http) {
         return req;
     };
 
+    
+    this.getAllProc = function () {
+        var req = $http.get(uri + '/api/Config/pronceso');
+        return req;
+    };
+
     this.getAll = function () {
         var req = $http.get(uri + '/api/Config');
         return req;
@@ -77,12 +83,45 @@ app.service("PromanagerService", function ($http) {
 
 });
 
+
+app.service("AmparosService", function ($http) {
+
+    var uri = "http://localhost:49372";
+
+    this.getALL = function () {
+        var req = $http.get(uri + '/api/Amparos/');
+        return req;
+    };
+
+    this.post = function (amparos) {
+        var req = $http.post(uri + '/api/Amparos', amparos);
+        return req;
+    };
+});
+
+
+app.service("AseguradoraService", function ($http) {
+
+    var uri = "http://localhost:49372";
+
+    this.getALL = function () {
+        var req = $http.get(uri + '/api/Aseguradoras/');
+        return req;
+    };
+
+    this.post = function (aseguradora) {
+        var req = $http.post(uri + '/api/Aseguradoras', aseguradora);
+        return req;
+    };
+});
+
+
 app.service("ProyectoServices", function ($http) {
 
     var uri = "http://localhost:49372";
 
     this.getAllConfig = function () {
-        var req = $http.get(uri + '/api/Config');
+        var req = $http.get(uri + '/api/Config/All');
         return req;
     };
 
@@ -204,13 +243,9 @@ app.service("AspiranteServices", function ($http) {
         return request;
     };
 
-    this.put = function (id, aspirante) {
-        var request = $http({
-            method: "put",
-            url: uri + '/api/aspirantes/' + id,
-            data: aspirante
-        });
-        return request;
+    this.relacion = function (relacion) {
+        var req = $http.post(uri + '/api/aspiranteproceso', relacion);
+        return req;
     };
 });
 

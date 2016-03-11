@@ -33,9 +33,8 @@ namespace WebApplication1.Controllers
         }
 
         // PUT api/aspirantes/5
-        public void Put(int id, Aspirantes aspirante)
+        public void Put(int id, [FromBody]string value)
         {
-            asp.UpdateAspirante(id, aspirante);
         }
 
         // DELETE api/aspirantes/5

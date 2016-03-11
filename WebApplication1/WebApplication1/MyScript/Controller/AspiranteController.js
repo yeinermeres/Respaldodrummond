@@ -264,7 +264,7 @@
                             obj.push(obj2[j]);
                             var vendor = {
                                 id: null,
-                                Nit: obj[j].Nit,
+                                Nit_Cedula: obj[j].Nit,
                                 Nom_RazonSocial: obj[j].Nom_RazonSocial,
                                 Correo: obj[j].Correo,
                                 Direccion: obj[j].Direccion,
@@ -276,14 +276,13 @@
                         }
 
                         AspiranteServices.post(vendor).then(function () {
-                            Notificacion($scope.mensajeSuccess, "success");
                             loadRecords();
                         },
                         function (errorpl) {
                             console.log(errorpl)
                         });
-
                     }
+                    Notificacion($scope.mensajeSuccess, "success");
                     
                     
                 } else {

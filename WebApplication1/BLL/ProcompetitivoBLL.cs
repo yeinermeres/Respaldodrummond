@@ -231,7 +231,7 @@ namespace BLL
                     {
                         AspirantesEntity aspirante = new AspirantesEntity();
                         aspirante.ASPIRANTE_ID = item.ASPIRANTE_ID;
-                        aspirante.NIT = item.NIT;
+                        aspirante.NIT_CEDULA = item.NIT_CEDULA;
                         aspirante.NOM_RAZONSOCIAL = item.NOM_RAZONSOCIAL;
                         aspirante.CORREO = item.CORREO;
                         aspirante.DIRECCION = item.DIRECCION;

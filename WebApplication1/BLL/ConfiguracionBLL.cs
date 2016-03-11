@@ -113,6 +113,63 @@ namespace BLL
                 }
             }
         }
+
+        /// <summary>
+        /// Meotodo para obtener una lista total de los elementos almacenados
+        /// en la tabla Configuracion tipo proceso competitivo
+        /// </summary>
+        /// <returns></returns>
+        public List<ConfiguracionEntity> GetAllProc()
+        {
+            using (var contex = new ModelContex())
+            {
+                var dto = contex.Configuracion.Where(t => t.TIPO_CONFIG != 1).ToList();
+                List<ConfiguracionEntity> Lisconf = new List<ConfiguracionEntity>();
+                if (dto != null)
+                {
+
+                    foreach (var item in dto)
+                    {
+                        ConfiguracionEntity confi = new ConfiguracionEntity();
+                        confi.CONFIG_ID = item.CONFIG_ID;
+                        confi.NOMBRE_CONFIG = item.NOMBRE_CONFIG;
+                        confi.TIPO_CONFIG = item.TIPO_CONFIG;
+                        Lisconf.Add(confi);
+                    }
+                    return Lisconf;
+                }
+                else
+                {
+                    return Lisconf;
+                }
+            }
+        }
+
+        public List<ConfiguracionEntity> GetConfig()
+        {
+            using (var contex = new ModelContex())
+            {
+                var dto = contex.Configuracion.ToList();
+                List<ConfiguracionEntity> Lisconf = new List<ConfiguracionEntity>();
+                if (dto != null)
+                {
+
+                    foreach (var item in dto)
+                    {
+                        ConfiguracionEntity confi = new ConfiguracionEntity();
+                        confi.CONFIG_ID = item.CONFIG_ID;
+                        confi.NOMBRE_CONFIG = item.NOMBRE_CONFIG;
+                        confi.TIPO_CONFIG = item.TIPO_CONFIG;
+                        Lisconf.Add(confi);
+                    }
+                    return Lisconf;
+                }
+                else
+                {
+                    return Lisconf;
+                }
+            }
+        }
         
     }
 }

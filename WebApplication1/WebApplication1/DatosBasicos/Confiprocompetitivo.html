@@ -39,8 +39,8 @@
         <li>
             <a>Datos basicos</a>
         </li>
-        <li class="active">
-            <strong>Proyectos</strong>
+        <li>
+            <strong>proceso competitivo</strong>
         </li>
     </ol>
 </div>
@@ -53,7 +53,7 @@
                 <div class="ibox-title">
                     <div class="row">
                         <div class="col-lg-9">
-                            <h2>Gestión  datos basicos proyectos</h2>
+                            <h2>Datos basicos proceso competitivo</h2>
                         </div>
                         <div class="col-lg-3">
                             <div class="input-group">
@@ -81,7 +81,8 @@
                                 </td>
                                 <td class="center">
                                     <span ng-switch="{{Config.TIPO_CONFIG}}">
-                                        <span ng-switch-when="1">Contrato</span>
+                                        <span ng-switch-when="2">Categoria</span>
+                                        <span ng-switch-when="3">Familia</span>
                                     </span>
                                 </td>
                                 <td style="width:120px;text-align:center" class="center">
@@ -106,6 +107,14 @@
                         <h4 class="modal-title">Nuevo Registro</h4>
                     </div>
                     <div class="modal-body">
+                        <div class="form-group">
+                            <label>Tipo de registro</label>
+                            <select class="form-control" ng-model="Config.TIPO_CONFIG" name="TIPO_CONFIG" id="TIPO_CONFIG">
+                                <option></option>
+                                <option value="2">Categoria</option>
+                                <option value="3">Familia</option>
+                            </select>
+                        </div>
                         <form role="form">
                             <div class="form-group">
                                 <label>Nombre</label>
@@ -134,7 +143,8 @@
                                 <label>Tipo</label>
                                 <select class="form-control" ng-model="Config.TIPO_CONFIG" name="TIPO_CONFIG" id="TIPO_CONFIG">
                                     <option></option>
-                                    <option value="1">Contrato</option>
+                                    <option value="2">Categoria</option>
+                                    <option value="3">Familia</option>
                                 </select>
                             </div>
                             <div class="form-group">

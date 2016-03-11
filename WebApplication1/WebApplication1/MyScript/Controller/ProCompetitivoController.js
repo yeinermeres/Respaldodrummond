@@ -2,7 +2,7 @@
 
     $scope.visibilidadOff = false
     $scope.visibilidadOn = true
-
+    var acumulador = 0;
 
     $rootScope.ProCompetitivo;
     $rootScope.AspProceso;
@@ -39,6 +39,7 @@
 
 
     function inicialize() {
+        acumulador = 0;
         $scope.Proyec = {};
         $scope.Proceso = {};
         $scope.Aspirante = {};
@@ -182,7 +183,7 @@
         console.log("SELECCION ASP : " + $scope.Aspirante.ASPIRANTE_ID)
         swal({
             title: "Mensaje de confirmación",
-            text: "¿Esta seguro que desea agregar este Vendor?" +
+            text: "¿Esta seguro que desea agregar este aspirante?" +
             "\n" + $scope.Aspirante.NOM_RAZONSOCIAL,
             type: "warning",
             showCancelButton: true,
@@ -423,10 +424,11 @@
     $scope.Ocultar = function () {
         $scope.visibilidadOff = false
         $scope.visibilidadOn = true
-
+        inicialize();
     }
 
     $scope.visualizar = function () {
+        
         document.getElementById("lista").innerHTML = "";
         var files = document.getElementById('files').files;
         //var archivos = new FormData();
@@ -434,38 +436,39 @@
         for (i = 0; i < files.length; i++) {
             file = files[i];
             archivos.push({ 'id': i, 'file': file });
+            acumulador = parseFloat(acumulador) + parseFloat((archivos[i].file.size / (1024 * 1024)).toFixed(2));
         }
-        var item = "<table class='table table-striped'>";
-        item += "<thead>";
-        item += "<tr>";
-        item += "<th></th>";
-        item += "<th>Nombre de archivo</th>";
-        item += "<th>Tamaño</th>";
-        item += "<th>Tipo </th>";
-        item += "<th>Acciones</th>";
-        item += "</tr>";
-        item += "</thead>";
-        //cargando tabla
-        for (i = 0; i < archivos.length; i++) {
+            var item = "<table class='table table-striped'>";
+            item += "<thead>";
             item += "<tr>";
-            item += "<td>" + parseInt(i + 1) + ".</td>";
-            item += "<td>" + archivos[i].file.name + "</td>";
-            item += "<td style='font-size:12px'>" + (archivos[i].file.size / (1024 * 1024)).toFixed(2) + " MG</td>";
-            item += "<td style='font-size:12px;'>";
-            item += "<select class='form-control'>";
-            item += "<option></option>";
-            item += "</select>";
-            item += "</td>";
-            item += '</td>';
-            item += '<td>';
-            item += '<a href="javasrcritp:;" title="Remover archivo" onclick="angular.element(this).scope().Removeritem(' + i + ');"><i class="fa fa-trash" style="font-size:20px;color:#ED5565;margin-left:20px"></i></a>';
-            item += '</td>';
+            item += "<th></th>";
+            item += "<th>Nombre de archivo</th>";
+            item += "<th>Tamaño</th>";
+            item += "<th style='width:200px;'>Tipo </th>";
+            item += "<th>Acciones</th>";
             item += "</tr>";
-        }
-        $("#lista").append(item);
-        item += '</table>';
-
-
+            item += "</thead>";
+            //cargando tabla
+            for (i = 0; i < archivos.length; i++) {
+                item += "<tr>";
+                item += "<td>" + parseInt(i + 1) + ".</td>";
+                item += "<td>" + archivos[i].file.name + "</td>";
+                item += "<td style='font-size:12px'>" + (archivos[i].file.size / (1024 * 1024)).toFixed(2) + " MG</td>";
+                item += "<td style='width:inherit;'>";
+                item += "<select class='form-control'>";
+                item += "<option></option>";
+                item += "<option>Proceso competitivo</option>";
+                item += "</select>";
+                item += "</td>";
+                item += '</td>';
+                item += '<td>';
+                item += '<a href="javasrcritp:;" title="Remover archivo" onclick="angular.element(this).scope().Removeritem(' + i + ');"><i class="fa fa-trash" style="font-size:20px;color:#ED5565;margin-left:20px"></i></a>';
+                item += '</td>';
+                item += "</tr>";
+            }
+            $("#lista").append(item);
+            item += '</table>';
+    
     }
 
     $scope.Removeritem = function (i) {
@@ -477,6 +480,7 @@
         item += "<th></th>";
         item += "<th>Nombre de archivo</th>";
         item += "<th>Tamaño</th>";
+        item += "<th style='width:200px;'>Tipo </th>";
         item += "<th>Acciones</th>";
         item += "</tr>";
         item += "</thead>";
@@ -486,6 +490,12 @@
             item += "<td>" + parseInt(i + 1) + ".</td>";
             item += "<td>" + archivos[i].file.name + "</td>";
             item += "<td style='font-size:12px'>" + (archivos[i].file.size / (1024 * 1024)).toFixed(2) + " MG</td>";
+            item += "<td style='width:inherit;'>";
+            item += "<select class='form-control'>";
+            item += "<option></option>";
+            item += "<option>Proceso competitivo</option>";
+            item += "</select>";
+            item += "</td>";
             item += '</td>';
             item += '<td>';
             item += '<a href="javasrcritp:;" title="Remover archivo" onclick="angular.element(this).scope().Removeritem(' + i + ');"><i class="fa fa-trash" style="font-size:20px;color:#ED5565;margin-left:20px"></i></a>';
@@ -505,7 +515,7 @@
 
         $.ajax({
             type: "POST",
-            url: "/api/Files",
+            url: "/api/Files/",
             contentType: false,
             processData: false,
             data: data,

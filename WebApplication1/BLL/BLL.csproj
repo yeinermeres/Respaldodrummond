@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AmparosBLL.cs" />
+    <Compile Include="AseguradorasBLL.cs" />
     <Compile Include="AspiranteProcesoBLL.cs" />
     <Compile Include="AspirantesBLL.cs" />
     <Compile Include="ConfiguracionBLL.cs" />

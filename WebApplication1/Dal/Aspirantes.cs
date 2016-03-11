@@ -11,7 +11,7 @@ namespace Dal
     {
         [Key]
         public int ASPIRANTE_ID { get; set; }
-        public int NIT { get; set; }
+        public string NIT_CEDULA { get; set; }
         public string NOM_RAZONSOCIAL { get; set; }
         public string CORREO { get; set; }
         public string DIRECCION { get; set; }
@@ -21,6 +21,10 @@ namespace Dal
 
         [ForeignKey("ID_ASPIRANTE")]
         public virtual ICollection<Aspirante_Proceso> Aspirante_Proceso { get; set; }
+
+        [ForeignKey("CONTRATISTA")]
+        public virtual ICollection<Oferta_Mercantil> OfertaAspirante { get; set; }
+        
 
     }
 }

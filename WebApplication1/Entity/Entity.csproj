@@ -39,7 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AmparosEntity.cs" />
     <Compile Include="ArchivosProcEntity.cs" />
+    <Compile Include="AseguradorasEntity.cs" />
     <Compile Include="AspiranteProcesoEntity.cs" />
     <Compile Include="AspirantesEntity.cs" />
     <Compile Include="ConfiguracionEntity.cs" />
@@ -50,6 +52,7 @@
     <Compile Include="ProjerManagerEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProyectosEntity.cs" />
+    <Compile Include="UserEntity.cs" />
     <Compile Include="VISTAS\Vproyec_competitivo.cs" />
   </ItemGroup>
   <ItemGroup>

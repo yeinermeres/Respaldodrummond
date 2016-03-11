@@ -14,8 +14,8 @@ namespace BLL
         {
             using (var contex = new ModelContex())
             {
-                var dto = contex.Aspirantes.Where(t => t.NIT == a.NIT).FirstOrDefault();
-                if (dto!=null)
+                var dto = contex.Aspirantes.Where(t => t.NIT_CEDULA == a.NIT_CEDULA).FirstOrDefault();
+                if (dto != null)
                 {
                     dto.NOM_RAZONSOCIAL = a.NOM_RAZONSOCIAL;
                     dto.TELEFONO = a.TELEFONO;
@@ -29,7 +29,6 @@ namespace BLL
                     contex.Aspirantes.Add(a);
                     contex.SaveChanges();
                 }
-                
             }
         }
 
@@ -46,7 +45,7 @@ namespace BLL
                     {
                         AspirantesEntity aspirante = new AspirantesEntity();
                         aspirante.ASPIRANTE_ID= item.ASPIRANTE_ID;
-                        aspirante.NIT = item.NIT;
+                        aspirante.NIT_CEDULA = item.NIT_CEDULA;
                         aspirante.NOM_RAZONSOCIAL = item.NOM_RAZONSOCIAL;
                         aspirante.CORREO = item.CORREO;
                         aspirante.DIRECCION = item.DIRECCION;
@@ -59,25 +58,6 @@ namespace BLL
                 }
 
                 return LisAsp;
-            }
-        }
-
-        public void UpdateAspirante(int id, Aspirantes Asp)
-        {
-            using (var contex = new ModelContex())
-            {
-                var dto = contex.Aspirantes.Where(t => t.ASPIRANTE_ID == id).First();
-                if (dto != null)
-                {
-                    dto.NIT = Asp.NIT;
-                    dto.NOM_RAZONSOCIAL = Asp.NOM_RAZONSOCIAL;
-                    dto.CORREO = Asp.CORREO;
-                    dto.DIRECCION = Asp.DIRECCION;
-                    dto.CIUDAD = Asp.CIUDAD;
-                    dto.DEPARTAMENTO = Asp.DEPARTAMENTO;
-                    dto.TELEFONO = Asp.TELEFONO;
-                    contex.SaveChanges();
-                }
             }
         }
     }

@@ -34,10 +34,18 @@ var app;
                     templateUrl: 'DatosBasicos/Configuracion.html',
                     controller: 'ConfiguracionController'
                 })
-                .when('DatosBasicos/Confiproc', {
+                .when('/DatosBasicos/Confiproc', {
                     templateUrl: 'DatosBasicos/Confiprocompetitivo.html',
                     controller: 'confiprocompetitivoController'
                 })
+                 .when('/DatosBasicos/Amparos', {
+                     templateUrl: 'DatosBasicos/Polizas.html',
+                     controller: 'AmparosController'
+                 })
+                 .when('/DatosBasicos/Aseguradoras', {
+                     templateUrl: 'DatosBasicos/Aseguradoras.html',
+                     controller: 'AseguradorasController'
+                 })
                 .when('/DatosBasicos/ProjerManajer', {
                     templateUrl: 'DatosBasicos/ProjerManager.html',
                     controller: 'ProManagerController'
@@ -57,7 +65,7 @@ var app;
                 .when('/DetalleCompetitivo', {
                     templateUrl: 'Proyectos/ProcesoCompetitivo/Detalle_Procompetitivo.html',
                 })
-                .when('/Proyectos/RegistroAspirante', {
+                .when('/DatosBasicos/RegistroAspirante', {
                     templateUrl: 'Proyectos/ProcesoCompetitivo/RegistroAspirante.html',
                     controller: 'AspiranteController'
                 })

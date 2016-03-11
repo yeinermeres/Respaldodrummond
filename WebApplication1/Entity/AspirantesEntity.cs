@@ -9,7 +9,7 @@ namespace Entity
     public class AspirantesEntity
     {
         public int ASPIRANTE_ID { get; set; }
-        public int NIT { get; set; }
+        public string NIT_CEDULA { get; set; }
         public string NOM_RAZONSOCIAL { get; set; }
         public string CORREO { get; set; }
         public string DIRECCION { get; set; }

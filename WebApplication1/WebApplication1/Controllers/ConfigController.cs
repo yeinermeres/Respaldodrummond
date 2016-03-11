@@ -21,6 +21,22 @@ namespace WebDrummond.Controllers
             
         }
 
+        [HttpGet]
+        [Route("~/api/Config/pronceso")]
+        public List<ConfiguracionEntity> Getproc()
+        {
+            return confi.GetAllProc();
+
+        }
+
+        [HttpGet]
+        [Route("~/api/Config/All")]
+        public List<ConfiguracionEntity> Getconfig()
+        {
+            return confi.GetConfig();
+
+        }
+
         // GET: api/Config/5
         public List<ConfiguracionEntity> Get(int id)
         {

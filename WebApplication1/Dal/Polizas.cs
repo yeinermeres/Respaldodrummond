@@ -15,7 +15,7 @@ namespace Dal
         public string FECHA_FINAL_POL { get; set; }
         public string ASEGURADORA { get; set; }
         public decimal VALOR_POLIZA { get; set; }
-        public string TIPO_POLIZA { get; set; }
+        public int TIPO_POLIZA { get; set; }
         public decimal VALOR_ASEGURADO { get; set; }
 
         /// <summary>
@@ -24,5 +24,6 @@ namespace Dal
         public string OFERTAMERCANTIL { get; set; }
 
         //public virtual Oferta_Mercantil oferta_mercantil { get; set; }
+
     }
 }

@@ -196,6 +196,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AmparosController.cs" />
+    <Compile Include="Controllers\AseguradorasController.cs" />
     <Compile Include="Controllers\AspiranteProcesoController.cs" />
     <Compile Include="Controllers\AspirantesController.cs" />
     <Compile Include="Controllers\ConfigController.cs" />
@@ -211,6 +213,13 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -262,8 +271,6 @@
     <Content Include="css\animate.css" />
     <Content Include="css\bootstrap-material-design.css" />
     <Content Include="css\bootstrap.min.css" />
-    <Content Include="css\fileinput.css" />
-    <Content Include="css\fileinput.min.css" />
     <Content Include="css\patterns\3.png" />
     <Content Include="css\patterns\4.png" />
     <Content Include="css\patterns\header-profile-skin-1.png" />
@@ -344,6 +351,9 @@
     <Content Include="css\plugins\toastr\toastr.min.css" />
     <Content Include="css\style.css" />
     <Content Include="css\sweetalert.css" />
+    <Content Include="DatosBasicos\Aseguradoras.html" />
+    <Content Include="DatosBasicos\Polizas.html" />
+    <Content Include="DatosBasicos\Confiprocompetitivo.html" />
     <Content Include="DatosBasicos\Configuracion.html" />
     <Content Include="DatosBasicos\ProjerManager.html" />
     <Content Include="email_templates\action.html" />
@@ -356,7 +366,6 @@
     <Content Include="font-awesome\css\font-awesome.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Historial\Historial.html" />
-    <Content Include="HtmlPage1.html" />
     <Content Include="img\a1.jpg" />
     <Content Include="img\a2.jpg" />
     <Content Include="img\a3.jpg" />
@@ -431,8 +440,6 @@
     <Content Include="js\demo\peity-demo.js" />
     <Content Include="js\demo\rickshaw-demo.js" />
     <Content Include="js\demo\sparkline-demo.js" />
-    <Content Include="js\fileinput.js" />
-    <Content Include="js\fileinput.min.js" />
     <Content Include="js\inspinia.js" />
     <Content Include="js\jquery-2.1.1.js" />
     <Content Include="js\jquery-ui-1.10.4.min.js" />
@@ -514,19 +521,23 @@
     <Content Include="js\plugins\wow\wow.min.js" />
     <Content Include="js\sweetalert-dev.js" />
     <Content Include="js\sweetalert.min.js" />
+    <Content Include="js\xlsx\jszip.js" />
+    <Content Include="js\xlsx\lodash.min.js" />
+    <Content Include="js\xlsx\xlsx-reader.js" />
+    <Content Include="js\xlsx\xlsx.js" />
+    <Content Include="login.aspx" />
+    <Content Include="MyScript\Controller\AseguradorasController.js" />
     <Content Include="MyScript\Controller\AspiranteController.js" />
     <Content Include="MyScript\Controller\ConfiguracionController.js" />
+    <Content Include="MyScript\Controller\confiprocompetitivoController.js" />
     <Content Include="MyScript\Controller\ordencompraController.js" />
+    <Content Include="MyScript\Controller\AmparosController .js" />
     <Content Include="MyScript\Controller\ProCompetitivoController.js" />
     <Content Include="MyScript\Controller\ProManagerController.js" />
     <Content Include="MyScript\Controller\ProyectosController.js" />
     <Content Include="MyScript\Controller\Ofertamercantilontroller.js" />
     <Content Include="MyScript\Router\Enrutador.js" />
     <Content Include="MyScript\Servicios\pServices.js" />
-    <Content Include="js\xlsx\jszip.js" />
-    <Content Include="js\xlsx\lodash.min.js" />
-    <Content Include="js\xlsx\xlsx-reader.js" />
-    <Content Include="js\xlsx\xlsx.js" />
     <Content Include="Notificaciones\Notificaciones.html" />
     <Content Include="OFM\GestionOFM.html" />
     <Content Include="OFM\OP\Ordencompra.html" />
@@ -535,6 +546,7 @@
     <Content Include="Proyectos\ProcesoCompetitivo\RegistroAspirante.html" />
     <Content Include="Proyectos\Proyectos\Detalle_Proyec.html" />
     <Content Include="Proyectos\Proyectos\Proyectos.html" />
+    <Content Include="pruebaexcel.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />

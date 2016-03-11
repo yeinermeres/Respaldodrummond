@@ -89,7 +89,7 @@
         $('#ModalEditar').modal('show');
     };
 
-    //Function Para Actualizar
+    //Functin Para Actualizar
     $scope.update = function () {
         var promanager = {};
 
