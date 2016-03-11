@@ -14,7 +14,7 @@ var app;
             XLSXReader(file, readCells, toJSON, function (data) {
                 $rootScope.$apply(function () {
                     deferred.resolve(data);
-                    console.log(data.sheets.Hoja1);
+                    console.log(data.sheets);
                 });
             });
 

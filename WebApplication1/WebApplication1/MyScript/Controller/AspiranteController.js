@@ -1,4 +1,4 @@
-﻿app.controller('AspiranteController', function ($scope, AspiranteServices, XLSXReaderService, $http) {
+﻿app.controller('AspiranteController', function ($scope, AspiranteServices, XLSXReaderService) {
     $scope.Asp = {}; //Objeto Actual
     $scope.Aspirantes = []; //Listado de Objetos
     $scope.editMode = false; // Modo de Edición
@@ -28,7 +28,7 @@
         var promiseGet = AspiranteServices.getAll(); //The Method Call from service
         promiseGet.then(function (pl) {
             $scope.Aspirantes = pl.data;
-            console.log(pl.data);
+            console.log("Base de datos "+pl.data);
         },
         function (errorPl) {
             $log.error('Error al cargar los datos almacenados', errorPl);
@@ -204,11 +204,40 @@
         inicialice();
     };
 
-    $scope.mensaje = false;
-    $scope.error = false;
     $scope.showPreview = false;
     $scope.showJSONPreview = true;
     $scope.json_string = "";
+
+    $scope.mensajeError = "Debe seleccionar una hoja valida."
+    $scope.mensajeSuccess = "Se realizado el registro de manera exitosa."
+
+    function Notificacion(mensaje, Accion) {
+        setTimeout(function () {
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "progressBar": false,
+                "preventDuplicates": false,
+                "positionClass": "toast-bottom-full-width",
+                "onclick": null,
+                "showDuration": "400",
+                "hideDuration": "1000",
+                "timeOut": "7000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            if (Accion == "error") {
+                toastr.error(mensaje, "SAC-Notificaciones");
+            } else {
+                toastr.success(mensaje, "SAC-Notificaciones");
+            }
+
+        }, 1100);
+    }
+
 
     $scope.fileChanged = function (files) {
         $scope.isProcessing = true;
@@ -219,88 +248,57 @@
             $scope.isProcessing = false;
             // mi ediciones
             var file_name = document.getElementById("uploadBtn").value;
-            document.getElementById("uploadFile").value = file_name.substring(12, file_name.length);
-
+            console.log("Excel "+$scope.sheets["Verdors"]);
         });
     };
 
     $scope.EnviarLista = function () {
         // reiniciamos siempre el modal
-        $scope.mensaje = false;
-        $scope.error = false;
-        $(".progress").css("display", "block");
-        $(".progress-bar").css("width", "0%");
-
         try {
             if ($scope.sheets !== undefined) {
                 var obj2 = $scope.sheets[$scope.sheet];
                 var obj = [];
-                for (var j = 0; j < obj2.length; j++) {
-                    if (obj2[j].Nit !== "" && obj2[j].Nit !== null && obj2[j].Nit !== undefined) {
-                        obj.push(obj2[j]);
-                    }
-                }
-                //console.log($scope.sheets["Sheet1"]);
-                /* ---------------------------------BARRA PROGRESO ---------------------------------*/
-                var barra = $(".progress-bar");
-
-                barra.width("100%");
-
-                if (obj[0].Nit === undefined) {
-                    alert("No se encuentra el campo cedula");
-                } else {
-                    $scope.contador = 0;
-                    $scope.tamano = obj.length;
-                    for (var i = 0; i < obj.length; i++) {
-                        if (obj[i].Nit !== "" && obj[i].Nit !== null && obj[i].Nit !== undefined) {
-                            var empleado = {
+                if ($scope.sheet == "Vendors") {
+                    for (var j = 0; j < obj2.length; j++) {
+                        if (obj2[j].Nit !== "" && obj2[j].Nit !== null && obj2[j].Nit !== undefined) {
+                            obj.push(obj2[j]);
+                            var vendor = {
                                 id: null,
-                                Nit: obj[i].Nit,
-                                Nom_RazonSocial: obj[i].Nom_RazonSocial,
-                                Correo: obj[i].Correo,
-                                Direccion: obj[i].Direccion,
-                                Ciudad: obj[i].Ciudad,
-                                Departamento: obj[i].Departamento,
-                                Telefono: obj[i].Telefono
+                                Nit: obj[j].Nit,
+                                Nom_RazonSocial: obj[j].Nom_RazonSocial,
+                                Correo: obj[j].Correo,
+                                Direccion: obj[j].Direccion,
+                                Ciudad: obj[j].Ciudad,
+                                Departamento: obj[j].Departamento,
+                                Telefono: obj[j].Telefono
+
                             }
-                            $http.post("/api/aspirantes/", empleado).then(function () {
-                                $scope.contador++;
-                                setTimeout(function () {
-                                    toastr.options = {
-                                        "closeButton": true,
-                                        "debug": false,
-                                        "progressBar": false,
-                                        "preventDuplicates": false,
-                                        "positionClass": "toast-bottom-full-width",
-                                        "onclick": null,
-                                        "showDuration": "400",
-                                        "hideDuration": "1000",
-                                        "timeOut": "7000",
-                                        "extendedTimeOut": "1000",
-                                        "showEasing": "swing",
-                                        "hideEasing": "linear",
-                                        "showMethod": "fadeIn",
-                                        "hideMethod": "fadeOut"
-                                    };
-                                    toastr.success("Se realizado el registro de manera exitosa.", "SAC-Notificaciones");
-                                    
-                                }, 1100);
-                                loadRecords();
-                            },
-                                function (errorpl) {
-                                    console.log(errorpl)
-                                });
-                        } else {
-                            alert("No se encuentra elnit en la fila" + (Number(i) + 2));
                         }
+
+                        AspiranteServices.post(vendor).then(function () {
+                            Notificacion($scope.mensajeSuccess, "success");
+                            loadRecords();
+                        },
+                        function (errorpl) {
+                            console.log(errorpl)
+                        });
+
                     }
+                    
+                    
+                } else {
+                    Notificacion($scope.mensajeError, "error")
                 }
+
+                
+                
+
 
             } else {
-                $scope.error = true;
+                toastr.error("Ha ocurrido un Error.", "SAC-Notificaciones");
             }
         } catch (Exepcion) {
-            alert("Debe seleccionar una hoja valida");
+            toastr.error("Debe seleccionar una hoja valida.", "SAC-Notificaciones");
         }
     };
 
