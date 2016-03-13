@@ -12,6 +12,7 @@ namespace Dal
         public int ID_ASPIRANTEPROCESO { get; set; }
         public int ID_ASPIRANTE { get; set; }
         public int ID_PROCESO { get; set; }
+        public DateTime FECHA_SUCRIPCION { get; set; }
         public string RUTA { get; set; }
 
     }

@@ -19,11 +19,13 @@ namespace BLL
                 {
                     var CTX = contex.Aspirantes.Max(p=> p.ASPIRANTE_ID);
                     ap.ID_ASPIRANTE = CTX;
+                    ap.FECHA_SUCRIPCION = DateTime.Now;
                     contex.Aspirantes_proceso.Add(ap);
                     contex.SaveChanges();
                 }
                 else
                 {
+                  ap.FECHA_SUCRIPCION = DateTime.Now;
                   contex.Aspirantes_proceso.Add(ap);
                   contex.SaveChanges();
                 }

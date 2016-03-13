@@ -120,6 +120,10 @@
     <Compile Include="Migrations\201603111940024_Aspirante_OFM.Designer.cs">
       <DependentUpon>201603111940024_Aspirante_OFM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603131344125_c.cs" />
+    <Compile Include="Migrations\201603131344125_c.Designer.cs">
+      <DependentUpon>201603131344125_c.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Oferta_Mercantil.cs" />
     <Compile Include="Orden_Compra.cs" />
@@ -186,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603111940024_Aspirante_OFM.resx">
       <DependentUpon>201603111940024_Aspirante_OFM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603131344125_c.resx">
+      <DependentUpon>201603131344125_c.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

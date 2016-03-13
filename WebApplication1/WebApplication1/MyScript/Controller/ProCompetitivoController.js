@@ -33,6 +33,7 @@
     loadRecordProyectos();
     loadRecords();
     loadRecordAspirantes();
+    $scope.ocultar = false;
     inicialize();
 
     $scope.CurrentDate = new Date();//Fecha actual
@@ -537,7 +538,6 @@
 
 
     $scope.detallecontratado = function () {
-        alert("aaa")
         $rootScope.ProCompetitivo = this.Proceso;
         console.log("id c" + $rootScope.ProCompetitivo.ID_COMPETITIVO)
     }

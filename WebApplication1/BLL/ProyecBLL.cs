@@ -168,12 +168,14 @@ namespace BLL
                     foreach (var item in Lisp)
                     {
                         ProcompetitivoEntity proceso = new ProcompetitivoEntity();
+                        proceso.ID_COMPETITIVO = item.ID_COMPETITIVO;
                         proceso.LUGAR_EJECUCION = item.LUGAR_EJECUCION;
                         proceso.FECHA_INICO = item.FECHA_INICO;
                         proceso.FECHA_INIC_SERVICE = item.FECHA_INIC_SERVICE;
                         proceso.DETALLE_PS = item.DETALLE_PS;
                         proceso.TIEMPO_EJECUCION = item.TIEMPO_EJECUCION;
                         proceso.TIEMPO_PROCESO = item.TIEMPO_PROCESO;
+                        proceso.VALOR_ESTIMADO = item.PRESUPUESTO;
                         resul.Add(proceso);
                     }
 

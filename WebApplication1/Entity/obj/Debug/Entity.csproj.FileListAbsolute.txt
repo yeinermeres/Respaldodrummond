@@ -64,3 +64,12 @@ F:\Respaldodrummond\WebApplication1\Entity\bin\Debug\EntityFramework.xml
 F:\Respaldodrummond\WebApplication1\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
 F:\Respaldodrummond\WebApplication1\Entity\obj\Debug\Entity.dll
 F:\Respaldodrummond\WebApplication1\Entity\obj\Debug\Entity.pdb
+E:\Respaldodrummond\WebApplication1\Entity\bin\Debug\Entity.dll
+E:\Respaldodrummond\WebApplication1\Entity\bin\Debug\Entity.pdb
+E:\Respaldodrummond\WebApplication1\Entity\bin\Debug\Dal.dll
+E:\Respaldodrummond\WebApplication1\Entity\bin\Debug\EntityFramework.dll
+E:\Respaldodrummond\WebApplication1\Entity\bin\Debug\Dal.pdb
+E:\Respaldodrummond\WebApplication1\Entity\bin\Debug\EntityFramework.xml
+E:\Respaldodrummond\WebApplication1\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+E:\Respaldodrummond\WebApplication1\Entity\obj\Debug\Entity.dll
+E:\Respaldodrummond\WebApplication1\Entity\obj\Debug\Entity.pdb

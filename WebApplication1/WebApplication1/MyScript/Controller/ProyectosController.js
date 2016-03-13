@@ -1,9 +1,12 @@
-﻿app.controller('ProyectosController', function ($scope, ProyectoServices, $rootScope) {
+﻿app.controller('ProyectosController', function ($scope, ProyectoServices,ProcompetitivoServices , $rootScope) {
+
+    $scope.AspirantesPros = [];
 
     $scope.Proyec = {}; //Objeto Actual
     $scope.Proyecs = []; //Listado de Objetos
     $scope.editMode = false; // Modo de Edición
     $rootScope.Proyecto;
+    $scope.ocultar = false;
     ///Objetos para matener los datos al cambiar de pagina
     $rootScope.Proc_Competitivo = {};
     $rootScope.Proc_Competitivos = [];
@@ -53,11 +56,25 @@
         $scope.Proyec.PROYECT_MANAGER = "";
     }
 
-
+    
 
     $scope.LoaPromanager = function () {
         $('#Modalmanager').modal('show');
         loadManager();
+    }
+
+
+    $scope.loadRecordsAspirantes = function (id) {
+        var promiseGet = ProcompetitivoServices.get(id); //The Method Call from service
+        promiseGet.then(function (pl) {
+            $scope.AspirantesPros = pl.data;
+            $("#marco").removeClass("col-lg-12");
+            $("#marco").addClass("col-lg-7");
+            $scope.ocultar = true;
+        },
+        function (errorPl) {
+            console.log('Error al cargar los datos almacenados', errorPl);
+        });
     }
 
     ///Function para cargar todos los proyectos
@@ -75,7 +92,6 @@
         var promiseGet = ProyectoServices.get(id); //The Method Call from service
         promiseGet.then(function (pl) {
             $rootScope.Proc_Competitivos = pl.data;
-            console.log($rootScope.Proc_Competitivos)
         },
               function (errorPl) {
                   console.log('Error al cargar los datos almacenados', errorPl);
