@@ -46,8 +46,8 @@ var app;
                      templateUrl: 'DatosBasicos/Aseguradoras.html',
                      controller: 'AseguradorasController'
                  })
-                .when('/DatosBasicos/ProjerManajer', {
-                    templateUrl: 'DatosBasicos/ProjerManager.html',
+                .when('/DatosBasicos/ProjectManager', {
+                    templateUrl: 'DatosBasicos/ProjectManager.html',
                     controller: 'ProManagerController'
                 })
                 .when('/Proyectos/Proyectos', {
@@ -65,7 +65,7 @@ var app;
                 .when('/DetalleCompetitivo', {
                     templateUrl: 'Proyectos/ProcesoCompetitivo/Detalle_Procompetitivo.html',
                 })
-                .when('/DatosBasicos/RegistroAspirante', {
+                .when('/DatosBasicos/RegistroVendors', {
                     templateUrl: 'Proyectos/ProcesoCompetitivo/RegistroAspirante.html',
                     controller: 'AspiranteController'
                 })

@@ -355,7 +355,7 @@
     <Content Include="DatosBasicos\Polizas.html" />
     <Content Include="DatosBasicos\Confiprocompetitivo.html" />
     <Content Include="DatosBasicos\Configuracion.html" />
-    <Content Include="DatosBasicos\ProjerManager.html" />
+    <Content Include="DatosBasicos\ProjectManager.html" />
     <Content Include="email_templates\action.html" />
     <Content Include="email_templates\alert.html" />
     <Content Include="email_templates\billing.html" />

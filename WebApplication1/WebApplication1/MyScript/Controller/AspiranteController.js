@@ -2,7 +2,7 @@
     $scope.Asp = {}; //Objeto Actual
     $scope.Aspirantes = []; //Listado de Objetos
     $scope.editMode = false; // Modo de Edición
-
+    var vendor = [];
     $scope.ON = true
     $scope.OFF = false
 
@@ -254,8 +254,31 @@
     };
 
     $scope.EnviarLista = function () {
+        
+        var obj2 = $scope.sheets[$scope.sheet];
+        var obj = [];
+        for (var j = 0; j < obj2.length; j++) {
+            if (obj2[j].Nit !== "" && obj2[j].Nit !== null && obj2[j].Nit !== undefined) {
+                obj.push(obj2[j]);
+                vendor =[
+                    {
+                    id: null,
+                    Nit_Cedula: obj[j].Nit,
+                    Nom_RazonSocial: obj[j].Nom_RazonSocial,
+                    Correo: obj[j].Correo,
+                    Direccion: obj[j].Direccion,
+                    Ciudad: obj[j].Ciudad,
+                    Departamento: obj[j].Departamento,
+                    Telefono: obj[j].Telefono
+
+                    }
+                ];
+            }
+            
+        }
+        console.log("obj" + JSON.stringify(vendor))
         // reiniciamos siempre el modal
-        try {
+       /* try {
             if ($scope.sheets !== undefined) {
                 var obj2 = $scope.sheets[$scope.sheet];
                 var obj = [];
@@ -299,7 +322,7 @@
             }
         } catch (Exepcion) {
             toastr.error("Debe seleccionar una hoja valida.", "SAC-Notificaciones");
-        }
+        }*/
     };
 
 
