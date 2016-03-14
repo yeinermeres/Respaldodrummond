@@ -1,36 +1,4 @@
-﻿<style>
-    .input_table {
-        text-align: center;
-        border-radius: 0;
-        border-width: 0 0 1px;
-        border-style: solid;
-        border-color: rgba(0,0,0,.12);
-        font: 400 15px/18px Roboto,sans-serif;
-        box-shadow: inset 0 -1px 0 transparent;
-        box-sizing: border-box;
-        padding: 12px 4px;
-        background: 0 0;
-        width: 100%;
-        display: block;
-    }
-
-    input {
-        -webkit-appearance: textfield;
-        background-color: white;
-        border-image-source: initial;
-        border-image-slice: initial;
-        border-image-width: initial;
-        border-image-outset: initial;
-        border-image-repeat: initial;
-        -webkit-rtl-ordering: logical;
-        -webkit-user-select: text;
-        cursor: auto;
-        padding: 1px;
-        border: 2px inset;
-    }
-</style>
-
-
+﻿
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <ol class="breadcrumb">
@@ -52,6 +20,7 @@
 
     </div>
 </div>
+
 <div class="wrapper wrapper-content animated fadeIn">
     <div class="row">
         <div class="col-lg-12">
@@ -66,8 +35,8 @@
                 </div>
                 <div class="tabs-container">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="DatoBasic#tab-1">Información basica</a></li>
-                        <li class=""><a data-toggle="tab" href="DatoBasic#tab-2">Descripón</a></li>
+                        <li class="active"><a data-toggle="tab" href="DatoBasic#tab-1">Información del Basica</a></li>
+                        <li class=""><a data-toggle="tab" href="DatoBasic#tab-2">Descripción</a></li>
                     </ul>
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane active">
@@ -125,7 +94,7 @@
                                                 <td><input type="text" class="input_table form-control" placeholder="@example.com"></td>
                                                 <td><input type="text" class="input_table  form-control" placeholder="0000000"></td>
                                                 <td> <input type="text" class="input_table  form-control" placeholder="0000000"></td>
-                                                <td><center><button class="btn btn-outline btn-primary dim" type="button"><i class="fa fa-plus"></i></button></center></td>
+                                                <td><a href="javasrcritp:;" title="Adicionar contacto"><i class="fa fa-plus" style="font-size: 20px; padding: 7px"></i></a></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -137,7 +106,36 @@
                         <div id="tab-2" class="tab-pane">
                             <div class="panel-body">
 
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 " style="padding:7px;margin-left:10px;">
+                                        <h5>Seleccione el archivo que desea subir:</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+
+                                    <div class="col-lg-4 col-md-4 col-sm-12" type="file" style="padding: 12px; margin-left: 10px;">
+
+                                        <div class="fileUpload btn verde" style="color: #9E9E9E; transform: translate(-15px,-15px); ">
+                                            <input type="file" id="uploadBtn" name="excel_file" accept=".xlsx" onchange="angular.element(this).scope().fileChanged(this.files);" required="true" class="upload" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-4 col-md-4 col-sm-12" ng-show="sheets" style="padding:7px;">
+                                        <div class="form-group">
+                                            <label for="input" class="pull-left control-label">Seleccione el Libro:</label>
+                                            <div class="col-lg-7 col-md-6" style="margin-top:-8px;">
+                                                <select ng-model="sheet" id="input" class="form-control" required="required" ng-change="EnviarLista()">
+                                                    <option ng-repeat="(key, value) in sheets">{{key}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-group col-lg-12">
+
 
                                     <table class="table table-striped">
                                         <thead>
@@ -150,28 +148,42 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng:repeat="item in invoice.items">
-                                                <td><input type="text" class="input_table form-control" placeholder="" ng:model="item.description"></td>
-                                                <td><input type="text" class="input_table form-control" placeholder="" ng:model="item.qty" ng:required></td>
-                                                <td><input type="text" class="input_table  form-control" placeholder="" ng-model="item.Unidad"></td>
-                                                <td><input type="text" class="input_table  form-control" placeholder="" ng:model="item.cost" ng:required></td>
-                                                <td><input type="text" disabled="true" class="input_table  form-control" value="{{item.qty * item.cost | currency}}"></td>
-                                                <td><center><button ng:click="removeItem($index)" class="btn btn-outline btn-primary dim" type="button"><i class="fa fa-trash"></i></button></center></td>
+                                            <tr data-ng-repeat="invoices in invoice">
+                                                <td><input type="text" class="input_table form-control" placeholder="" ng-model="invoices.Producto"></td>
+                                                <td><input type="text" class="input_table form-control" placeholder="" ng-model="invoices.Cantidad" ng-required></td>
+                                                <td><input type="text" class="input_table  form-control" placeholder="" ng-model="invoices.Unidad"></td>
+                                                <td><input type="text" class="input_table  form-control" placeholder="" ng-model="invoices.ValorUnitario" ng:required></td>
+                                                <td><input type="text" disabled="true" class="input_table  form-control" value="{{invoices.Cantidad * invoices.ValorUnitario | currency}}"></td>
+                                                <td><a href="javasrcritp:;" title="Eliminar item" ng:click="removeItem($index)"><i class="fa fa-trash" style="font-size: 20px; color: #ED5565; padding: 7px"></i></a></td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><h3>Total ejecutado:</h3></td>
+                                                <td><h3>{{total() | currency}}</h3></td>
                                             </tr>
                                             <tr>
                                                 <td><a href ng:click="addItem()" class="btn btn-primary">Nuevo Campo</a></td>
                                                 <td></td>
-                                                <td><h3>Total:</h3></td>
+                                                <td><h3>Disponible:</h3></td>
                                                 <td><h3>{{total() | currency}}</h3></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
 
-                               <br />
+                                <br />
+                                <div class="form-group">
+                                    <label for="comment">Observación orden de compra:</label>
+                                    <textarea class="form-control" rows="3" id="Observacion"></textarea>
+                                </div>
 
                             </div>
                         </div>
+                    </div>
+                    <div class="panel-footer" style="background-color:white">
+                        <center><button type="button" class="btn btn-primary">Registrar</button></center>
                     </div>
                 </div>
             </div>

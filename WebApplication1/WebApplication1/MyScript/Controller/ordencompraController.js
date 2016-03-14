@@ -1,4 +1,4 @@
-﻿app.controller('ordencompraController', function ($scope,OfertamercantilServices) {
+﻿app.controller('ordencompraController', function ($scope,OfertamercantilServices, XLSXReaderService) {
 
     $scope.ON = true
     $scope.OFF = false
@@ -14,7 +14,10 @@
         $scope.Order.NO_OFM = "";
         $scope.Order.NUMERO_PO = ";"
     }
+
     $scope.total = $scope.Cantidad * $scope.Punidad;
+
+    $scope.invoice = [];
 
     $scope.invoice = {
         items: [{
@@ -24,7 +27,7 @@
     };
 
     $scope.addItem = function() {
-        $scope.invoice.items.push({
+        $scope.invoice.push({
             qty: 1,
             description: '',
             cost: 0
@@ -32,13 +35,13 @@
     },
 
     $scope.removeItem = function(index) {
-        $scope.invoice.items.splice(index, 1);
+        $scope.invoice.splice(index, 1);
     },
 
     $scope.total = function() {
         var total = 0;
-        angular.forEach($scope.invoice.items, function(item) {
-            total += item.qty * item.cost;
+        angular.forEach($scope.invoice, function (invoices) {
+            total += invoices.Cantidad * invoices.ValorUnitario;
         })
 
         return total;
@@ -55,7 +58,6 @@
                console.log('Error al cargar los datos almacenados', errorPl);
        });
     }
-
 
     $scope.getOrder = function (id) {
         var promiseGet = OfertamercantilServices.getAllorder(id); //The Method Call from service
@@ -81,6 +83,7 @@
         console.log($scope.OFM)
         localStorage.setItem("NO_OFM", $scope.OFM.N_OFM);
     }
+
     $scope.Modal = function () {
         $scope.Order = this.Order;
         $("#modalprocesos").modal("show");
@@ -92,4 +95,83 @@
         $scope.Order.NO_OFM = localStorage.getItem("NO_OFM");
         $("#modalprocesos").modal("hide");
     }
+
+
+    $scope.showPreview = false;
+    $scope.showJSONPreview = true;
+    $scope.json_string = "";
+
+    $scope.fileChanged = function (files) {
+        $scope.isProcessing = true;
+        $scope.sheets = [];
+        $scope.excelFile = files[0];
+        XLSXReaderService.readFile($scope.excelFile, $scope.showPreview, $scope.showJSONPreview).then(function (xlsxData) {
+            $scope.sheets = xlsxData.sheets;
+            $scope.isProcessing = false;
+            // mi ediciones
+            var file_name = document.getElementById("uploadBtn").value;
+            console.log("Excel " + $scope.sheets["Orden"]);
+        });
+    };
+
+    $scope.mensajeError = "Debe seleccionar una hoja valida."
+    $scope.mensajeSuccess = "Se han cargado los datos de manera exitosa."
+
+    function Notificacion(mensaje, Accion) {
+        setTimeout(function () {
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "progressBar": false,
+                "preventDuplicates": false,
+                "positionClass": "toast-bottom-full-width",
+                "onclick": null,
+                "showDuration": "400",
+                "hideDuration": "1000",
+                "timeOut": "7000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            if (Accion == "error") {
+                toastr.error(mensaje, "SAC-Notificaciones");
+            } else {
+                toastr.success(mensaje, "SAC-Notificaciones");
+            }
+
+        }, 1100);
+    }
+
+    $scope.EnviarLista = function () {
+        // reiniciamos siempre el modal
+        try {
+            if ($scope.sheets !== undefined) {
+                var obj2 = $scope.sheets[$scope.sheet];
+                var obj = [];
+                if ($scope.sheet == "Orden") {
+                    for (var j = 0; j < obj2.length; j++) {
+                        if (obj2[j].Producto !== "" && obj2[j].Producto !== null && obj2[j].Producto !== undefined) {
+                            obj.push(obj2[j]);
+                        }
+                    }
+                    Notificacion($scope.mensajeSuccess, "success")
+                    $scope.invoice = obj;
+                } else {
+
+                    Notificacion($scope.mensajeError, "error")
+                }
+
+
+            } else {
+                toastr.error("Ha ocurrido un Error.", "SAC-Notificaciones");
+            }
+        } catch (Exepcion) {
+            Notificacion($scope.mensajeError, "error")
+        }
+    };
+
+
+
 });
