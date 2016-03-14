@@ -209,6 +209,7 @@
     $scope.json_string = "";
 
     $scope.mensajeError = "Debe seleccionar una hoja valida."
+
     $scope.mensajeSuccess = "Se realizado el registro de manera exitosa."
 
     function Notificacion(mensaje, Accion) {

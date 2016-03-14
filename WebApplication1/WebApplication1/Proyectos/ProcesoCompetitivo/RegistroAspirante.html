@@ -112,7 +112,7 @@
                         <thead>
                             <tr>
                                 <th>Nit</th>
-                                <th>Nombre/Razón social</th>
+                                <th>Nombre/razón social</th>
                                 <th>Correo</th>
                                 <th style="text-align:center">Acciones</th>
                             </tr>
@@ -157,7 +157,7 @@
                             <input type="text" name="id" ng-model="Asp.NIT_CEDULA" class="form-control" required>
                         </div>
                         <div class="form-group" ng-class="{ 'has-error' : userForm.nombre.$invalid && !userForm.nombre.$pristine }">
-                            <label>Nombre /Razón social*</label>
+                            <label>Nombre /razón social*</label>
                             <input type="text" name="nombre" ng-model="Asp.NOM_RAZONSOCIAL" class="form-control" required>
                         </div>
                         <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
@@ -204,7 +204,7 @@
                             <input type="text" name="id" ng-model="Asp.NIT_CEDULA" class="form-control">
                         </div>
                         <div class="form-group" >
-                            <label>Nombre /Razón social*</label>
+                            <label>Nombre /razón social*</label>
                             <input type="text" name="nombre" ng-model="Asp.NOM_RAZONSOCIAL" class="form-control" >
                         </div>
                         <div class="form-group">
@@ -230,13 +230,12 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-white" data-dismiss="modal" ng-click="cancel()">Cerrar</button>
+                    <button type="submit" class="btn btn-white" data-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-primary" ng-click="update()">Actualizar</button>
                 </div>
             </div>
         </div>
     </div>
-
 
 
     <div class="contenedorb" style="height: 80px">
