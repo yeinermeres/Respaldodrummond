@@ -1,35 +1,4 @@
 ﻿
-<style type="text/css">
-    .contenedorb {
-        width: 90px;
-        height: 90px;
-        position: absolute;
-        right: 0px;
-        bottom: 0px;
-    }
-
-    .botonF1 {
-        width: 60px;
-        height: 60px;
-        border-radius: 100%;
-        background: #7cb342;
-        right: 0;
-        bottom: 0;
-        position: fixed;
-        margin-right: 16px;
-        margin-bottom: 16px;
-        border: none;
-        outline: none;
-        color: #FFF;
-        font-size: 36px;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-        transition: .1s;
-    }
-
-        .botonF1:active {
-            transform: scale(1.1);
-        }
-</style>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <ol class="breadcrumb">
@@ -87,7 +56,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="gradeX" data-ng-repeat="Proceso in Procesos track by $index">
+                                <tr class="gradeX" data-ng-repeat="Proceso in filteredProcesos track by $index">
                                     <td>{{Proceso.PROYECTO}}</td>
                                     <td>{{Proceso.DETALLE_PS}}</td>
                                     <td>{{Proceso.FECHA_INICO}}</td>
@@ -95,16 +64,16 @@
                                     <td>{{Proceso.FECHA_INIC_SERVICE}}</td>
                                     <td style="text-align:center">{{Proceso.TIEMPO_EJECUCION}} días</td>
                                     <td>
-                                      <span>
-                                        <span ng-show='Proceso.ESTADO_PROC == "C"'>
-                                            <a href="#/DetalleCompetitivo" title="Ver detalle" ng-click="detalle()"><i class="fa fa-eye" style="font-size:20px;color:#1A7BB9;"></i></a>
+                                        <span>
+                                            <span ng-show='Proceso.ESTADO_PROC == "C"'>
+                                                <a href="#/DetalleCompetitivo" title="Ver detalle" ng-click="detalle()"><i class="fa fa-eye" style="font-size:20px;color:#1A7BB9;"></i></a>
+                                            </span>
+                                            <span ng-show='Proceso.ESTADO_PROC == "L"'>
+                                                <a href="#/DetalleCompetitivo" title="Ver detalle" ng-click="detallecontratado()"><i class="fa fa-eye" style="font-size:20px;color:#1A7BB9;"></i></a>
+                                            </span>
+                                            <span ng-show='Proceso.ESTADO_PROC == "A"'></span>
                                         </span>
-                                        <span ng-show='Proceso.ESTADO_PROC == "L"'>
-                                            <a href="#/DetalleCompetitivo" title="Ver detalle" ng-click="detallecontratado()"><i class="fa fa-eye" style="font-size:20px;color:#1A7BB9;"></i></a>
-                                        </span>
-                                          <span ng-show='Proceso.ESTADO_PROC == "A"'></span>
-                                      </span>
-                                     </td>
+                                    </td>
                                     <td style="width:100px;text-align:center">
                                         <span>
                                             <span ng-show='Proceso.ESTADO_PROC == "A"'></span>
@@ -125,6 +94,11 @@
                             </tbody>
 
                         </table>
+                        <div style="text-align:center">
+                            <div data-pagination="" data-num-pages="numPagesPC()"
+                                 data-current-page="currentPagePC" data-max-size="maxSize"
+                                 data-boundary-links="true"></div>
+                        </div> 
 
                     </div>
                 </div>
@@ -341,7 +315,6 @@
 
         </div>
     </div>
-
 </div>
 
 <div class="modal inmodal" id="modalAspirantes" tabindex="-1" role="dialog" aria-hidden="true">
@@ -352,32 +325,21 @@
                 <h4 class="modal-title">Listado de Vendors</h4>
             </div>
             <div class="modal-body">
-                <div class="text-right">
 
+                <div>
+                    <ul class="nav metismenu" id="side-menu" data-ng-repeat="Aspirante in filteredAspirantes track by $index" ng-click="CargarAsp()">
+                        <li>
+                            <a><i class="fa fa-user"></i> <span class="nav-label">{{Aspirante.NOM_RAZONSOCIAL}}</span></a>
+                        </li>
+                    </ul>
                 </div>
-
-                <div class="hr-line-dashed"></div>
-
-
-                <div class="feed-activity-list" data-ng-repeat="Aspirante in Aspirantes track by $index" ng-click="CargarAsp()">
-                    <div class="feed-element">
-                        <a href="" class="pull-left">
-                            <i class="fa fa-user fa-3x" style="color: #757575; "></i>
-                        </a>
-                        <div class="media-body ">
-
-                            <strong></strong><strong>{{Aspirante.NOM_RAZONSOCIAL}}</strong><br>
-
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <small>Nit : {{Aspirante.NIT_CEDULA}}</small><br />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div style="text-align:center">
+                    <div data-pagination="" data-num-pages="numPagesA()"
+                         data-current-page="currentPageA" data-max-size="maxSize"
+                         data-boundary-links="true"></div>
                 </div>
-
             </div>
+            
             <div class="modal-footer">
                 <button type="submit" class="btn btn-white" data-dismiss="modal">Cerrar</button>
             </div>
@@ -393,22 +355,18 @@
                 <h4 class="modal-title">Listado de Proyectos</h4>
             </div>
             <div class="modal-body">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Proyectos</th>
-                            <th>Programa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="gradeX" data-ng-repeat="Proyec in Proyes track by $index" ng-click="Cargar()">
-                            <td>{{Proyec.PROYECTO}}</td>
-                            <td>{{Proyec.PROGRAMA}}</td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
+                <div>
+                    <ul class="nav metismenu" id="side-menu" data-ng-repeat="Proyec in filteredProyes track by $index" ng-click="Cargar()">
+                        <li>
+                            <a><i class="fa fa-folder"></i> <span class="nav-label">{{Proyec.PROYECTO}}</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div style="text-align:center">
+                    <div data-pagination="" data-num-pages="numPagesP()"
+                         data-current-page="currentPageP" data-max-size="maxSize"
+                         data-boundary-links="true"></div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-white" data-dismiss="modal">Cerrar</button>

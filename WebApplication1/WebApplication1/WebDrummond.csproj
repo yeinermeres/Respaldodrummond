@@ -264,6 +264,7 @@
     <Content Include="Angular\js\app.js" />
     <Content Include="Angular\js\bootstrap\bootstrap.min.js" />
     <Content Include="Angular\js\bootstrap\ui-bootstrap-tpls-0.12.0.min.js" />
+    <Content Include="Angular\js\bootstrap\ui-bootstrap-tpls-0.3.0.min.js" />
     <Content Include="Angular\js\config.js" />
     <Content Include="Angular\js\controllers.js" />
     <Content Include="Angular\js\directives.js" />
@@ -283,6 +284,7 @@
     <Content Include="css\animate.css" />
     <Content Include="css\bootstrap-material-design.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\pagination.css" />
     <Content Include="css\patterns\3.png" />
     <Content Include="css\patterns\4.png" />
     <Content Include="css\patterns\header-profile-skin-1.png" />
@@ -631,7 +633,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

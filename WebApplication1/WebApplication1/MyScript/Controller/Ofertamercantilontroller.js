@@ -300,16 +300,17 @@
         $("#modalprocesos").modal('hide');
         localStorage.setItem("ID_COMPETITIVO", $scope.Proceso.ID_COMPETITIVO);
         $scope.OFM.DETALLE_PS = $scope.Proceso.DETALLE_PS;
-        $scope.OFM.FECHA_INIC_OFM = $scope.Proceso.FECHA_INIC_SERVICE;
-
+        $scope.OFM.FECHA_INIC_OFM = $scope.Proceso.FECHA_INICO;
+        console.log($scope.Proceso)
+        alert($scope.Proceso.FECHA_INICO)
         ///calculamos fecha de finalizacion
-        var result = new Date($scope.Proceso.FECHA_INIC_SERVICE);
+        var result = new Date($scope.OFM.FECHA_INIC_OFM);
         result.setDate(result.getDate() + $scope.Proceso.TIEMPO_EJECUCION);
-
+        
         ///$scope.OFM.FECHA_FINAL_OFM = ('0' + (result.getDate())).slice(-2) + "/" + ('0' + (result.getMonth() + 1)).slice(-2) + "/" + result.getFullYear();
 
         $scope.OFM.FECHA_FINAL_OFM = ('0' + (result.getMonth() + 1)).slice(-2) + "/" + ('0' + (result.getDate())).slice(-2) + "/" + result.getFullYear();
-
+        alert($scope.OFM.FECHA_FINAL_OFM)
         $scope.OFM.VIGENCIA = $scope.Proceso.TIEMPO_EJECUCION;
 
     }
