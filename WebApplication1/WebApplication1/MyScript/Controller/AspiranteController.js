@@ -2,9 +2,16 @@
     $scope.Asp = {}; //Objeto Actual
     $scope.Aspirantes = []; //Listado de Objetos
     $scope.editMode = false; // Modo de Edición
+
     var vendor = [];
+
     $scope.ON = true
     $scope.OFF = false
+
+    $scope.filteredTodos = []
+  , $scope.currentPage = 1
+  , $scope.numPerPage = 3
+  , $scope.maxSize = 4;
 
     $scope.Mostrar = function () {
         $scope.ON = false
@@ -28,7 +35,13 @@
         var promiseGet = AspiranteServices.getAll(); //The Method Call from service
         promiseGet.then(function (pl) {
             $scope.Aspirantes = pl.data;
-            console.log("Base de datos "+pl.data);
+            $scope.$watch('currentPage + numPerPage', function () {
+                var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+                , end = begin + $scope.numPerPage;
+
+                $scope.filteredTodos = $scope.Aspirantes.slice(begin, end);
+            });
+
         },
         function (errorPl) {
             $log.error('Error al cargar los datos almacenados', errorPl);
@@ -254,28 +267,7 @@
     };
 
     $scope.EnviarLista = function () {
-        
-        var obj2 = $scope.sheets[$scope.sheet];
-        var obj = [];
-        for (var j = 0; j < obj2.length; j++) {
-            if (obj2[j].Nit !== "" && obj2[j].Nit !== null && obj2[j].Nit !== undefined) {
-                obj.push(obj2[j]);
-                vendor =[
-                    {
-                    id: null,
-                    Nit_Cedula: obj[j].Nit,
-                    Nom_RazonSocial: obj[j].Nom_RazonSocial,
-                    Correo: obj[j].Correo,
-                    Direccion: obj[j].Direccion,
-                    Ciudad: obj[j].Ciudad,
-                    Departamento: obj[j].Departamento,
-                    Telefono: obj[j].Telefono
 
-                    }
-                ];
-            }
-            
-        }
         console.log("obj" + JSON.stringify(vendor))
         // reiniciamos siempre el modal
        /* try {
@@ -325,5 +317,9 @@
         }*/
     };
 
+    
+    $scope.numPages = function () {
+        return Math.ceil($scope.Aspirantes.length / $scope.numPerPage);
+    };
 
 });
