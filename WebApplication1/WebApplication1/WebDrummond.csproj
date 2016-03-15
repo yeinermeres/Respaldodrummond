@@ -42,6 +42,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -210,10 +213,19 @@
     <Compile Include="Controllers\ProjManagerController.cs" />
     <Compile Include="Controllers\ProyecController.cs" />
     <Compile Include="Controllers\pruebaController.cs" />
+    <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LdapAuthentication.cs" />
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -356,6 +368,7 @@
     <Content Include="DatosBasicos\Confiprocompetitivo.html" />
     <Content Include="DatosBasicos\Configuracion.html" />
     <Content Include="DatosBasicos\ProjectManager.html" />
+    <Content Include="Default.aspx" />
     <Content Include="email_templates\action.html" />
     <Content Include="email_templates\alert.html" />
     <Content Include="email_templates\billing.html" />
@@ -366,6 +379,7 @@
     <Content Include="font-awesome\css\font-awesome.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Historial\Historial.html" />
+    <Content Include="home.html" />
     <Content Include="img\a1.jpg" />
     <Content Include="img\a2.jpg" />
     <Content Include="img\a3.jpg" />
@@ -417,6 +431,7 @@
     <Content Include="img\landing\laptop.png" />
     <Content Include="img\landing\perspective.png" />
     <Content Include="img\landing\word_map.png" />
+    <Content Include="img\logo1.jpg" />
     <Content Include="img\meteor_logo.png" />
     <Content Include="img\mvc_logo.png" />
     <Content Include="img\off_canvas.jpg" />
@@ -526,6 +541,7 @@
     <Content Include="js\xlsx\xlsx-reader.js" />
     <Content Include="js\xlsx\xlsx.js" />
     <Content Include="login.aspx" />
+    <Content Include="MyScript\Controller\indexController.js" />
     <Content Include="MyScript\Controller\AseguradorasController.js" />
     <Content Include="MyScript\Controller\AspiranteController.js" />
     <Content Include="MyScript\Controller\ConfiguracionController.js" />
@@ -546,7 +562,6 @@
     <Content Include="Proyectos\ProcesoCompetitivo\RegistroAspirante.html" />
     <Content Include="Proyectos\Proyectos\Detalle_Proyec.html" />
     <Content Include="Proyectos\Proyectos\Proyectos.html" />
-    <Content Include="pruebaexcel.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />

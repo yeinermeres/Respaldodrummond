@@ -1,8 +1,9 @@
-﻿<!DOCTYPE html>
-<html ng-app="myApp">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApplication1.Default" %>
 
-<!-- Mirrored from webapplayers.com/inspinia_admin-v2.3/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 01 Sep 2015 13:10:07 GMT -->
-<head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head runat="server">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drummond.Ltda | Index</title>
@@ -27,10 +28,11 @@
     <link href="css/plugins/colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet">
     <link href="css/plugins/datapicker/datepicker3.css" rel="stylesheet">
     <link href="css/plugins/select2/select2.min.css" rel="stylesheet">
-
 </head>
-<body class="md-skin fixed-sidebar fixed-nav pace-done" id="body">
-    <div id="wrapper" ng-controller="indexController">
+<body  class="md-skin fixed-sidebar fixed-nav pace-done" id="body">
+    <form id="form1" runat="server">
+    <div>
+      <div id="wrapper" ng-controller="indexController">
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse" style="overflow: hidden; width: auto; height: 100%;">
                 <ul class="nav metismenu" id="side-menu">
@@ -51,12 +53,12 @@
                         <div class="logo-element">
                             SAC
                         </div>
-                    </li>s
+                    </li>
                     <li class="active">
                         <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Inicio</span></a>
                     </li>
                     <li class="">
-                        <a href=""><i class="fa fa-tasks"></i> <span class="nav-label">Proyecto</span><span class="fa arrow"></span></a>
+                        <a><i class="fa fa-tasks"></i> <span class="nav-label">Proyecto</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" style="height: 0px;">
 
                             <li><a href="#/Proyectos/Proyectos">Gestión de Proyectos</a></li>
@@ -78,9 +80,8 @@
 
                     <li><a href="#/Notificaciones"><i class="fa fa-bell"></i><span class="nav-label">Notificaciones</span></a></li>
                     <li><a href="#/Historial"><i class="fa fa-folder"></i><span class="nav-label">Historial</span></a></li>
-                    <li>
                     <li class="">
-                        <a href=""><i class="fa fa-tasks"></i> <span class="nav-label">Configuración</span><span class="fa arrow"></span></a>
+                        <a><i class="fa fa-tasks"></i> <span class="nav-label">Configuración</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" style="height: 0px;">
                             <li class="">
                                 <a href="#">Datos básicos<span class="fa arrow"></span></a>
@@ -137,7 +138,7 @@
                                 <li>
                                     <div class="dropdown-messages-box">
                                         <a href="profile.html" class="pull-left">
-                                            <img alt="image" class="img-circle" src="img/a4.jpg">
+                                            <img alt="image" class="img-circle" src="img/a4.jpg"/>
                                         </a>
                                         <div class="media-body ">
                                             <small class="pull-right text-navy">5h ago</small>
@@ -150,7 +151,7 @@
                                 <li>
                                     <div class="dropdown-messages-box">
                                         <a href="profile.html" class="pull-left">
-                                            <img alt="image" class="img-circle" src="img/profile.jpg">
+                                            <img alt="image" class="img-circle" src="img/profile.jpg"/>
                                         </a>
                                         <div class="media-body ">
                                             <small class="pull-right">23h ago</small>
@@ -171,7 +172,7 @@
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                <i class="fa fa-bell"></i>  <span class="label label-primary" style="background-color:#000000;opacity:0.4">8</span>
+                                <i class="fa fa-bell"></i>  <span class="label label-primary" style="background-color:#000000;opacity:0.4; height: 16px;">8</span>
                             </a>
                             <ul class="dropdown-menu dropdown-alerts">
                                 <li>
@@ -211,12 +212,12 @@
                                 </li>
                             </ul>
                         </li>
-
+                        
                         <li>
-                            <a ng-click="cerrarsesion()">
-                                <i class="fa fa-sign-out"></i> Cerrar sesion
-                            </a>
-                        </li>
+                          <asp:LinkButton ID="LinkButton1" runat="server">Cerrar sesion
+                              <i class="fa fa-sign-out"></i>
+                          </asp:LinkButton>    
+                         </li>
                     </ul>
                 </nav>
             </div>
@@ -224,7 +225,8 @@
             <div ng-view></div>
         </div>
     </div>
-
+    </div>
+    </form>
     <!-- Mainly scripts -->
     <script src="js/jquery-2.1.1.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -327,5 +329,4 @@
         });
     </script>
 </body>
-<!-- Mirrored from webapplayers.com/inspinia_admin-v2.3/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 01 Sep 2015 13:10:51 GMT -->
 </html>

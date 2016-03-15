@@ -30,6 +30,9 @@ var app;
     app.config(['$routeProvider', '$locationProvider',
         function AppConfig($routeProvider, $locationProvider) {
             $routeProvider
+                .when("/home", {
+                    templateUrl: 'home.html'
+                })
                 .when('/DatosBasicos/Configuracion', {
                     templateUrl: 'DatosBasicos/Configuracion.html',
                     controller: 'ConfiguracionController'
@@ -83,7 +86,9 @@ var app;
                 })
                 .when('/Historial', {
                     templateUrl: 'Historial/Historial.html',
-                });
+                }).otherwise({
+                    redirectTo: "/home"
+                });;
 
         }]);
 })();

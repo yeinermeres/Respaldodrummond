@@ -250,3 +250,17 @@ C:\Users\tecnoparque\Documents\GitHub\Respaldodrummond\WebApplication1\BLL\bin\D
 C:\Users\tecnoparque\Documents\GitHub\Respaldodrummond\WebApplication1\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 C:\Users\tecnoparque\Documents\GitHub\Respaldodrummond\WebApplication1\BLL\obj\Debug\BLL.dll
 C:\Users\tecnoparque\Documents\GitHub\Respaldodrummond\WebApplication1\BLL\obj\Debug\BLL.pdb
+C:\Users\ADMIN\Desktop\Respaldodrummond\WebApplication1\BLL\bin\Debug\BLL.dll.config
+C:\Users\ADMIN\Desktop\Respaldodrummond\WebApplication1\BLL\bin\Debug\BLL.dll
+C:\Users\ADMIN\Desktop\Respaldodrummond\WebApplication1\BLL\bin\Debug\BLL.pdb
+C:\Users\ADMIN\Desktop\Respaldodrummond\WebApplication1\BLL\bin\Debug\Dal.dll
+C:\Users\ADMIN\Desktop\Respaldodrummond\WebApplication1\BLL\bin\Debug\Entity.dll
+C:\Users\ADMIN\Desktop\Respaldodrummond\WebApplication1\BLL\bin\Debug\EntityFramework.dll
+C:\Users\ADMIN\Desktop\Respaldodrummond\WebApplication1\BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ADMIN\Desktop\Respaldodrummond\WebApplication1\BLL\bin\Debug\Dal.pdb
+C:\Users\ADMIN\Desktop\Respaldodrummond\WebApplication1\BLL\bin\Debug\Entity.pdb
+C:\Users\ADMIN\Desktop\Respaldodrummond\WebApplication1\BLL\bin\Debug\EntityFramework.xml
+C:\Users\ADMIN\Desktop\Respaldodrummond\WebApplication1\BLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ADMIN\Desktop\Respaldodrummond\WebApplication1\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+C:\Users\ADMIN\Desktop\Respaldodrummond\WebApplication1\BLL\obj\Debug\BLL.dll
+C:\Users\ADMIN\Desktop\Respaldodrummond\WebApplication1\BLL\obj\Debug\BLL.pdb
