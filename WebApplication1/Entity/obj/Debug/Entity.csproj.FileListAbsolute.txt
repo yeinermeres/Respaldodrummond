@@ -73,3 +73,12 @@ E:\Respaldodrummond\WebApplication1\Entity\bin\Debug\EntityFramework.xml
 E:\Respaldodrummond\WebApplication1\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
 E:\Respaldodrummond\WebApplication1\Entity\obj\Debug\Entity.dll
 E:\Respaldodrummond\WebApplication1\Entity\obj\Debug\Entity.pdb
+C:\Users\TECNOPARQUE\Desktop\Respaldodrummond\WebApplication1\Entity\bin\Debug\Entity.dll
+C:\Users\TECNOPARQUE\Desktop\Respaldodrummond\WebApplication1\Entity\bin\Debug\Entity.pdb
+C:\Users\TECNOPARQUE\Desktop\Respaldodrummond\WebApplication1\Entity\bin\Debug\Dal.dll
+C:\Users\TECNOPARQUE\Desktop\Respaldodrummond\WebApplication1\Entity\bin\Debug\EntityFramework.dll
+C:\Users\TECNOPARQUE\Desktop\Respaldodrummond\WebApplication1\Entity\bin\Debug\Dal.pdb
+C:\Users\TECNOPARQUE\Desktop\Respaldodrummond\WebApplication1\Entity\bin\Debug\EntityFramework.xml
+C:\Users\TECNOPARQUE\Desktop\Respaldodrummond\WebApplication1\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+C:\Users\TECNOPARQUE\Desktop\Respaldodrummond\WebApplication1\Entity\obj\Debug\Entity.dll
+C:\Users\TECNOPARQUE\Desktop\Respaldodrummond\WebApplication1\Entity\obj\Debug\Entity.pdb
