@@ -4,6 +4,22 @@
     $scope.visibilidadOn = true
     var acumulador = 0;
 
+    $scope.filteredProyes = []
+  , $scope.currentPageP = 1
+  , $scope.numPerPageP = 10
+  , $scope.maxSize = 4;
+
+    $scope.filteredProcesos = []
+  , $scope.currentPagePC = 1
+  , $scope.numPerPagePC = 10
+  , $scope.maxSize = 4;
+
+    $scope.filteredAspirantes = []
+  , $scope.currentPageA = 1
+  , $scope.numPerPageA = 10
+  , $scope.maxSize = 4;
+
+
     $rootScope.ProCompetitivo;
     $rootScope.AspProceso;
     $rootScope.AspirantesPros = [];
@@ -37,7 +53,6 @@
     inicialize();
 
     $scope.CurrentDate = new Date();//Fecha actual
-
 
     function inicialize() {
         acumulador = 0;
@@ -74,6 +89,20 @@
         $scope.Proceso.COMP_ADQUISICION = "";
         $scope.Proceso.TIPO_MONEDA = "";
     }
+
+    $scope.numPagesP = function () {
+        return Math.ceil($scope.Proyes.length / $scope.numPerPageP);
+    };
+
+    $scope.numPagesPC = function () {
+        return Math.ceil($scope.Procesos.length / $scope.numPerPagePC);
+    };
+
+    $scope.numPagesA = function () {
+        return Math.ceil($scope.Aspirantes.length / $scope.numPerPageA);
+    };
+
+    
 
 
     ///Function para cargar todos los proyectos
@@ -120,18 +149,31 @@
         promiseGet.then(function (pl) {
             $scope.Proyes = pl.data;
 
+            $scope.$watch('currentPageP + numPerPageP', function () {
+                var begin = (($scope.currentPagePC - 1) * $scope.numPerPageP)
+                , end = begin + $scope.numPerPageP;
+
+                $scope.filteredProyes = $scope.Proyes.slice(begin, end);
+            });
         },
            function (errorPl) {
                console.log('Error al cargar los datos almacenados', errorPl);
            });
     }
 
+    
     function loadRecords() {
         var promiseGet = ProcompetitivoServices.getAll(); //The Method Call from service
         promiseGet.then(function (pl) {
             $scope.Procesos = pl.data;
-            console.log('competitivo'+JSON.stringify($scope.Procesos))
+            console.log('competitivo' + $scope.Procesos)
 
+            $scope.$watch('currentPagePC + numPerPagePC', function () {
+                var begin = (($scope.currentPagePC - 1) * $scope.numPerPagePC)
+                , end = begin + $scope.numPerPagePC;
+
+                $scope.filteredProcesos = $scope.Procesos.slice(begin, end);
+            });
         },
            function (errorPl) {
                console.log('Error al cargar los datos almacenados', errorPl);
@@ -142,6 +184,13 @@
         var promiseGet = ProcompetitivoServices.getAllAspirantes(); //The Method Call from service
         promiseGet.then(function (pl) {
             $scope.Aspirantes = pl.data;
+
+            $scope.$watch('currentPageA + numPerPageA', function () {
+                var begin = (($scope.currentPageA - 1) * $scope.numPerPageA)
+                , end = begin + $scope.numPerPageA;
+
+                $scope.filteredAspirantes = $scope.Aspirantes.slice(begin, end);
+            });
         },
         function (errorPl) {
             console.log('Error al cargar los datos almacenados', errorPl);
